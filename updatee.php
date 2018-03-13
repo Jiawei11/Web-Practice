@@ -7,7 +7,6 @@
     echo "修改內容的序號為:" .$id .'<br>';
     echo "修改內容的標題為:" .$title .'<br>';
     echo "內容" . '<br>';
-
     echo "<input type='text' name='text'>";
     echo "<input type='submit'>";
     echo "<input type='reset'>";

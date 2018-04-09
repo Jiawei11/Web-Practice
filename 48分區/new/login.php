@@ -1,4 +1,3 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -36,7 +35,14 @@
 </style>
 <script>
 	$(function(){
-		title()
+		title();
+		cap();
+	});
+	function title(){
+			var title = $("#conta>h1").text();
+			document.title = title;
+		};
+	function cap(Len){
 		var Len = 4;
 		for(var i = 1 ; i<=4;i++){
 			$.ajax({
@@ -48,6 +54,7 @@
 					$("#img").append(img);
 					$("#drop").append("<div></div>");
 					$(img).attr('value',e);
+					value();
 				},
 			});
 		}
@@ -65,11 +72,26 @@
 				})
 			}
 		})
+	};
+	$(function(){
+		$('#show').click(function(){
+		if(this.checked){
+			$('#pwd').attr('type','text');
+		}else{
+			$('#pwd').attr('type','password');
+		}
 	});
-	function title(){
-			var title = $("#conta>h1").text();
-			document.title = title;
-		};
+	});
+
+	function value(){
+		var value = '';
+		$('img').each(function(){
+			value += ($(this).attr('value'));
+		});
+		console.log(value);
+		$("[name=ans]").val(value)
+		return true;
+	};
 </script>
 </head>
 
@@ -83,7 +105,8 @@
                 	<td>帳號:<input type="text" /></td>
                 </tr>
                 <tr>
-                	<td>密碼:<input type="password" /></td>
+                	<td>密碼:<input id="pwd" type="password" />
+					<input type="checkbox" id="show">顯示密碼</td>
                 </tr>
                 <tr>
                 	<td>圖形驗證碼:
@@ -95,7 +118,11 @@
                  		<div id="drop"></div>
                     </td>
                 </tr>
+				<tr>
+					<td><button type="button" id="reset">重產</button></td>
+				</tr>
            </table>
+		   <input type="text" name="ans">
            </form>
     </div>
 </body>

@@ -88,8 +88,7 @@
 		$('img').each(function(){
 			value += ($(this).attr('value'));
 		});
-		console.log(value);
-		$("[name=ans]").val(value)
+		$("[name=ans]").val(value);
 		return true;
 	};
 </script>

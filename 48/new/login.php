@@ -40,6 +40,9 @@
 		$('#reset').click(function(){
 			var code = "";
 			$('[name=ans]').val(code);
+			$('img').remove();
+			$('#drop>div').remove()
+			cap(4); 	
 			
 	});
 	});

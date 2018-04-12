@@ -52,20 +52,24 @@
 	};
 	function cap(Len){
 		var Len = 4;
+		var arr = [];
 		for(var i = 1 ; i<=4;i++){
 			$.ajax({
 				url: 'text.php',
 				async:false,
 				success:function(e){
+					arr.push(e);
 					var img = document.createElement('img');
 					img.src = 'plot.php?code=' + e;
 					$("#img").append(img);
 					$("#drop").append("<div></div>");
 					$(img).attr('value',e);
-					value();
+					
 				},
 			});
 		}
+		arr.sort();
+		$("[name=ans]").val(arr.join(''));
 		$('#img img').draggable({
 			snap: '#drop',
 			snapMode:'inner',
@@ -92,16 +96,6 @@
 	});
 	});
 	
-
-	function value(){
-		var value = '';
-		$('img').each(function(){
-			value += ($(this).attr('value'));
-		});
-		$("[name=ans]").val(value);
-		return true;
-	};
-	
 	function txt(){
 		var value = '';
 		$('#drop>div>img').each(function(){
@@ -116,7 +110,10 @@
 <body>
 	<?php
 		session_start();
+			if(!isset($_SESSION['check'])){
+		$_SESSION['check'] = 0;
 		echo $_SESSION['check'];
+	}
 	?>
 	<div id="conta">
     <form action="./loggin.php" method="POST">

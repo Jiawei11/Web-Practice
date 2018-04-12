@@ -1,12 +1,7 @@
 <?php
 	include_once('link.php');
 	session_start();
-	if(!isset($_SESSION['check'])){
-		$_SESSION['check'] = 0;
-		echo $_SESSION['check'];
-	}
-	
-	function err(){
+		function err(){
 		$_SESSION['check'] +=1;
 		if($_SESSION['check']>=3){
 			header('location:err.html');

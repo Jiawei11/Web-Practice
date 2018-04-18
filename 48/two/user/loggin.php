@@ -1,6 +1,7 @@
 <?php
-	include_once('link.php');
+	include_once('link.php');	
 	session_start();
+	date_default_timezone_set("Asia/Taipei");
 	function err(){
 		$_SESSION['check'] +=1;
 		if($_SESSION['check'] >=3){
@@ -26,7 +27,11 @@
 		err();
 	echo "<script>alert('驗證碼錯誤。');location.href='./login.php';</script>";
 	}else{
-		echo "<script>alert('登入成功。');location.href='index.php';</script>";
+		$date = $db->prepare('update user set login=:time where id=:id');
+		$date->bindValue('time',date('Y-m-d H:i:s'));
+		$date->bindValue('id',$row['id']);
+		$date->execute();
 		$_SESSION['power'] = $row['power'];
+		header("location:index.php");
 	}
 ?>

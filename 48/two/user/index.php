@@ -11,7 +11,9 @@
 <body>
 	<?php
 		session_start();
-		if($_SESSION['power'] == "管理者"){
+		if(!isset($_SESSION['power'])){
+			echo "<script>alert('沒有權限');location.href='./login.php';</script>";
+		}else if($_SESSION['power'] == "管理者"){
 			echo "<center>";
 			echo "管理者專區".'<br>';
 			echo "<a href='./root/adduser.php' class='ui-button'>新增會員</a>".'<p>';
@@ -22,8 +24,6 @@
 			echo "<center>";
 			echo "一般會員專區".'<br>';
 			echo "<a href='./root/logout.php?>' class='ui-button'>登出</a>";
-		}else{
-			echo "<script>alert('沒有權限');location.href='./login.php;</script>";
 		}
 	?>
 </body>

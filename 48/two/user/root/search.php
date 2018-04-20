@@ -7,30 +7,32 @@
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script>
-	$(function(){
+	/*$(function(){
 		$('button').click(function(){
 			$.ajax({
 				url:'get.php',
 				type:'POST',
 				data:{
 					'user':$('#text').val(),
-					'option':$('form1>#aaa').val(),
+					'option':$('[name=option]').val(),
 				},
 				success:function(e){
 					$('#div1').html(e);
 				}
 			})
 		})
-	});	
+	});
+	*/	
 </script>
 </head>
 <body>
-	<form action="#" name="form1" id="form">
+	<form action="get2.php" method="POST" name="form1" id="form">
         <div id="div1"></div>
-        <input type="text" class="ui-corner-all" id="text" required="required"/>
+        <input type="text" class="ui-corner-all" name="text" required="required"/>
         <input type="radio" name="option" value="desc" checked/>遞減    
         <input type="radio" name="option" value="asc" />遞增
-        <button>Click</button>
+        <button class="ui-button">Click</button>
+        <a href="../index.php" class="ui-button">回查詢</a>
     </form>
 </body>
 </html>

@@ -32,7 +32,7 @@
         <input type="radio" name="option" value="desc" checked/>遞減    
         <input type="radio" name="option" value="asc" />遞增
         <button class="ui-button">Click</button>
-        <a href="../index.php" class="ui-button">回查詢</a>
+        <a href="../index.php" class="ui-button">回首頁</a>
     </form>
 </body>
 </html>

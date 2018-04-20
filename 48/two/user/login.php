@@ -25,7 +25,6 @@
 	$(function(){
 		cap(4);
 		$('#btn').click(function(){
-			console.log(1)
 			$('#img>img').remove();
 			$('#drop>div').remove();
 			cap(4);

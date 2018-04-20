@@ -1,7 +1,14 @@
 <?php
 	include_once('../link.php');
 	$data = "%".$_POST['user']."%";
-	$sql = $db->prepare('select * from user where user like :user');
+	$asc ="";
+	var_dump($_POST['option']);
+	if($_POST['option'] == 1){
+		$asc = "SELECT * FROM user WHERE user LIKE :user ORDER by `id` ASC";
+	}else if($_POST['option'] == 2){
+		$asc = "SELECT * FROM user WHERE user LIKE :user ORDER by `id` DESC";	
+	}
+	$sql = $db->prepare($asc);
 	$sql->bindValue('user',$data);
 	$sql->execute();
 ?>

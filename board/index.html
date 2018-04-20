@@ -8,29 +8,17 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script>
 	$(function(){
-		$('button').click(function(){
-			$.ajax({
-				url:'get.php',
-				type:'POST',
-				data:{
-					'user':$('#text').val(),
-					'option':$('form1>#aaa').val(),
-				},
-				success:function(e){
-					$('#div1').html(e);
-				}
-			})
+		$.ajax({
+			url:'msg.php',
+			success: function(e){
+				$('#div1').html(e);
+			}
 		})
-	});	
+	});
 </script>
 </head>
 <body>
-	<form action="#" name="form1" id="form">
-        <div id="div1"></div>
-        <input type="text" class="ui-corner-all" id="text" required="required"/>
-        <input type="radio" name="option" value="desc" checked/>遞減    
-        <input type="radio" name="option" value="asc" />遞增
-        <button>Click</button>
-    </form>
+	Message:
+    	<div id="div1"></div>
 </body>
 </html>

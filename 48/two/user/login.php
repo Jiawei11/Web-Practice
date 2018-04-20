@@ -55,7 +55,6 @@
 			revert:'invalid',
 		})
 		
-		
 		$('#drop div').droppable({
 			drop:function(event,ui){
 				ui.helper.appendTo(this).css({
@@ -65,6 +64,7 @@
 				place();
 			}
 		})
+		
 		}
 		
 		function place(){

@@ -26,6 +26,7 @@
 		<th	width="100px" height="80px">名稱</th>
       	<th	width="100px" height="80px">權限</th>
         <th	width="100px" height="80px">功能</th>
+        <th width="100px" height="80px">登入時間</th>
    	 </tr>
      <?php
 	 	while($row = $sql->fetch(PDO::FETCH_ASSOC)){
@@ -40,11 +41,12 @@
 			echo "無法更改";
 		}else{?>
       <a href="mod.php?id=<?php echo $row['id'];?>">修改</a>
-	<a href="delete.php?id=<?php echo $row['id'];?>">刪除</a>
+	  <a href="delete.php?id=<?php echo $row['id'];?>">刪除</a>
     <?php 
 		}
 	?>
       </td>
+      <td><?php echo $row['login']; ?></td>
      </tr>
      <?php
 		}

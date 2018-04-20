@@ -33,9 +33,8 @@
 	});	
 	
 	function cap(Len){
-		var len = 4;
 		var arr = [];
-		for (var i = 1;i<=len;i++){
+		for (var i = 1;i<=Len;i++){
 			$.ajax({
 				url:'cap/text.php',
 				async:false,
@@ -52,9 +51,11 @@
 		$('[name=ans]').val(arr.join(''));
 		$('#img>img').draggable({
 			snap:'#drop',
-			snapMode:'inner',
-			revert:'invalid'
+			snapMode:'corner',
+			revert:'invalid',
 		})
+		
+		
 		$('#drop div').droppable({
 			drop:function(event,ui){
 				ui.helper.appendTo(this).css({
@@ -65,6 +66,7 @@
 			}
 		})
 		}
+		
 		function place(){
 			var value ='';
 			$('#drop>div>img').each(function(){
@@ -73,6 +75,7 @@
 			$("[name=txt]").val(value);
 			return true;
 		};
+		
 	};
 </script>
 </head>
@@ -100,11 +103,13 @@
         </tr>
         <tr>
         	<td colpsan="2">驗證<br />
-<div id="drop"></div></td>
+				<div id="drop"></div>
+			</td>
         </tr>
         <tr>
         	<td>
-            <input type="submit" />
+            <input type="submit" value="登入" />
+            <input type="reset"  value="清除" />
            	<input type="button" id="btn" value="重新產生"/>
             </td>
         </tr>

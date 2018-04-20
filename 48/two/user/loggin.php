@@ -18,20 +18,21 @@
 	$sql->execute();
 	$row = $sql->fetch(PDO::FETCH_ASSOC);
 	if($row == false){
-		echo "<script>alert('帳號錯誤。');locaiton.href='./login.php';</script>";
+		echo "<script>alert('帳號錯誤。');location.href='./login.php';</script>";
 		err();
 	}else if($row['password'] != $pwd){
-		echo "<script>alert('密碼錯誤。');locaiton.href='./login.php';</script>";
+		echo "<script>alert('密碼錯誤。');location.href='./login.php';</script>";
 		err();
 	}else if($txt != $ans){
 		err();
 	echo "<script>alert('驗證碼錯誤。');location.href='./login.php';</script>";
 	}else{
+		echo "<script>alert('登入成功。');location.href='./index.php';</script>";
 		$date = $db->prepare('update user set login=:time where id=:id');
 		$date->bindValue('time',date('Y-m-d H:i:s'));
 		$date->bindValue('id',$row['id']);
 		$date->execute();
 		$_SESSION['power'] = $row['power'];
-		header("location:index.php");
+		$_SESSION['id'] = $row['id'];
 	}
 ?>

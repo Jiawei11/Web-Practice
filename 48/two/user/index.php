@@ -11,18 +11,19 @@
 <body>
 	<?php
 		session_start();
-		if ($_SESSION['power'] == "管理者"){
+		if($_SESSION['power'] == "管理者"){
 			echo "<center>";
 			echo "管理者專區".'<br>';
 			echo "<a href='./root/adduser.php' class='ui-button'>新增會員</a>".'<p>';
 			echo "<a href='./root/list.php' class='ui-button'>會員列表</a>".'<p>';
-			echo "<a href='./root/logout.php' class='ui-button'>登出</a>";
+			echo "<a href='./root/search.php' class='ui-button'>查詢</a>".'<p>';
+			echo "<a class='ui-button'  href='./root/logout.php'>登出</a>";
 		}else if ($_SESSION['power'] == "一般使用者"){
 			echo "<center>";
 			echo "一般會員專區".'<br>';
-			echo "<a href='./root/logout.php' class='ui-button'>登出</a>";
+			echo "<a href='./root/logout.php?>' class='ui-button'>登出</a>";
 		}else{
-			echo "<script>alert('沒有權限');location.href='./login.php';</script>";
+			echo "<script>alert('沒有權限');location.href='./login.php;</script>";
 		}
 	?>
 </body>

@@ -22,15 +22,27 @@
 		echo '<p>';
 		while($row=$sql->fetch(PDO::FETCH_ASSOC)){
 	?>
+	<head>
+		<style>
+			th{
+				color:white;
+				background-color:#39f;
+			}
+			td{
+				color:white;
+				background-color:#39f;
+			}
+		</style>
+	</head>
     <table border="1px" width="1024" height="auto" align="center">
    		<tr>
-        	<td height="60" width="70" align="center">編號</td>
-        	<td height="60" width="70" align="center">帳號</td>
-        	<td height="60" width="70" align="center">密碼</td>
-            <td height="60" width="70" align="center">姓名</td>
-            <td height="60" width="70" align="center">登入</td>
-            <td height="60" width="70" align="center">登出</td>
-            <td height="60" width="70" align="center">權限</td>
+        	<th height="60" width="70" align="center">編號</th>
+        	<th height="60" width="70" align="center">帳號</th>
+        	<th height="60" width="70" align="center">密碼</th>
+            <th height="60" width="70" align="center">姓名</th>
+            <th height="60" width="70" align="center">登入</th>
+            <th height="60" width="70" align="center">登出</th>
+            <th height="60" width="70" align="center">權限</th>
         </tr>
         <tr>
         	<td height="60"  width="70" align="center"><?php echo str_pad($row['id'],3,0,STR_PAD_LEFT)?></td>

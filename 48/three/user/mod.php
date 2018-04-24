@@ -26,7 +26,7 @@
     	 <input type="radio" name="one" value="管理者" />管理者<P>
    	<input type="submit" class='ui-button' />
     <input type="reset" class='ui-button' />
-    <a href='index.php' class='ui-button'>回功能列表</a>
+    <a href='list.php' class='ui-button'>回列表</a>
     <input type="hidden" name="id" value=<?php echo $row['id'];?> />
     </form>
 </body>

@@ -17,6 +17,7 @@
 			echo '<center>'."管理者專區".'<p>';
 			echo "<a href='adduser.php' class='ui-button'>新增</a>".'<p>';
 			echo "<a href='list.php' class='ui-button'>列表</a>".'<p>';
+			echo "<a href='search/index.html' class='ui-button'>查詢</a>".'<p>';
 			echo "<a href='logout.php' class='ui-button'>登出</a>";
 		}else if($_SESSION['power'] == "一般使用者"){
 			echo '<center>'."一般會員專區".'<p>';

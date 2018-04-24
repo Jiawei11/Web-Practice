@@ -30,7 +30,7 @@
                 <th align="center">帳號</th>
                 <th align="center">密碼</th>
                 <th align="center">姓名</th>
-                <th align="center">權限</th>
+                <th width="200px" align="center">權限</th>
                 </tr>
                 <tr>
                     <td align="center"><?php echo str_pad($row['id'],3,0,STR_PAD_LEFT) ?></td>

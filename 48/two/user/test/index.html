@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script>
+    $(function(){
+        $('button').click(function(){
+            $.ajax({
+            url:'get.php',
+            type:'POST',
+            data:{
+                'option':$('[name=one]').val()
+            },
+            success:function(e){
+                $('#div1').text(e);
+            }
+        })
+        });
+    });
+</script>
+</head>
+<body>
+    <div id="div1">
+
+    </div>
+    <input type="checkbox"  name="one" value="遞增">遞增
+    <input type="checkbox"  name="one" value="遞減">遞減
+    <button>Click</button>
+</body>
+</html>

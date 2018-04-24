@@ -1,16 +1,19 @@
 <?php
     include_once('../link.php');
-    $data = "%".$_POST['text']."%";
-	$asc ="";
-	if($_POST['option'] == "遞增"){
-		$asc = "SELECT * FROM login WHERE user LIKE :user ORDER by `id` ASC";
-	}else if($_POST['option'] == "遞減"){
-		$asc = "SELECT * FROM login WHERE user LIKE :user ORDER by `id` DESC";	
-	}
-    $sql = $db->prepare($asc);
-    $sql->bindValue('user',$data);
-    $sql->execute();
+    $str = "";
+    $key = "%".$_POST['text']."%";
+    $sort = $_POST['sort'];
+    $method = $_POST['method'];
+    if(isset($_POST['text'])){
+        if($_POST['text'] != ""){
+            $str = "select * from login where user like '{$key}' order by {$sort} {$method}";
+        }else{
+            $str = "select * from login order by {$sort} {$method}";
+        }
+    }
+    $sql = $db->query($str);
     while($row=$sql->fetch(PDO::FETCH_ASSOC)){
+        
 ?>
  <!DOCTYPE html>
 <html>

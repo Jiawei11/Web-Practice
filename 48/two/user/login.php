@@ -39,6 +39,7 @@
 				async:false,
 				success: function(e){
 					arr.push(e)
+					console.log(e);
 					var img = document.createElement('img');
 					img.src = 'cap/plot.php?code=' + e;
 					$('#img').append(img);

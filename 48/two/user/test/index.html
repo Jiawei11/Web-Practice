@@ -15,7 +15,7 @@
             url:'get.php',
             type:'POST',
             data:{
-                'option':$('[name=one]').val()
+                'option':$('input:checked').val()
             },
             success:function(e){
                 $('#div1').text(e);
@@ -29,8 +29,8 @@
     <div id="div1">
 
     </div>
-    <input type="checkbox"  name="one" value="遞增">遞增
-    <input type="checkbox"  name="one" value="遞減">遞減
+    <input type="radio"  name="one" value="遞增" checked>遞增
+    <input type="radio"  name="one" value="遞減">遞減
     <button>Click</button>
 </body>
 </html>

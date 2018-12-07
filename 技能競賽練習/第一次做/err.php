@@ -2,18 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Member Cateogry</title>
+<title>錯誤達到三次</title>
 </head>
 
-	<?php
-		session_start();
-		if(isset($_SESSION['member']) == false){
-			echo '<script>alert("沒有登入");location.href="index.php"</script>';
-		}
-	?>
 <body>
-	<div align="center">
-    	<span>會員區域</span>
+	<div>
+    	<strong style="color:red;font-size:80px;">錯誤達到三次</strong>
     </div>
 </body>
 </html>

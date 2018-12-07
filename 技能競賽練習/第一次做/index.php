@@ -19,6 +19,7 @@
         <a href="register.php">註冊</a>
         <p>
         <a href="login.php">登入</a>
-    </div>
+   	  <p>
+</div>
 </body>
 </html>

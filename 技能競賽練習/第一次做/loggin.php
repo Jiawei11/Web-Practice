@@ -3,9 +3,9 @@
 	include_once('link.php');
 	function err(){
 		$_SESSION['check'] +=1;
-		if($_SESSION['check'] >=3){
+		if($_SESSION['check'] == 3){
 			$_SESSION['check'] = 0;
-			echo '<script>alert("錯誤以達到三次");location.href="index.php"</script>';
+				 echo '<script>alert("錯誤以達到三次");location.href="err.php"</script>'; 
 		}	
 	}
 	$sql = $db->prepare('select * from member where user=:user');
@@ -19,6 +19,7 @@
 		err();
 		echo '<script>alert("密碼錯誤");location.href="index.php"</script>';	
 	}else{
-		echo '<script>alert("登入成功");location.href="member.php"</script>';	
+		$_SESSION['member'] = $_POST['username'];
+		echo "<script>alert('登入成功');location.href='member.php'</script>";	
 	}
 ?>

@@ -14,10 +14,6 @@
 
 <body>
 	<div align="center">
-    	<span>功能區</span>
-        <p>
-        <a href="register.php">註冊</a>
-        <p>
         <a href="login.php">登入</a>
    	  <p>
 </div>

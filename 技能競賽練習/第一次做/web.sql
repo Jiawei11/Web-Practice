@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2018-12-07 12:09:21
+-- 產生時間： 2018-12-08 14:10:08
 -- 伺服器版本: 10.1.36-MariaDB
 -- PHP 版本： 5.6.38
 
@@ -30,17 +30,19 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `member` (
   `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
   `user` varchar(255) NOT NULL,
   `pwd` varchar(255) NOT NULL,
-  `rank` varchar(255) NOT NULL
+  `rank` varchar(255) NOT NULL DEFAULT '一般使用者'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- 資料表的匯出資料 `member`
 --
 
-INSERT INTO `member` (`id`, `user`, `pwd`, `rank`) VALUES
-(1, 'admin', '1234', '管理者');
+INSERT INTO `member` (`id`, `name`, `user`, `pwd`, `rank`) VALUES
+(0, '管理者', 'admin', '1234', '管理者'),
+(1, 'User', 'User', '1234', '一般使用者');
 
 --
 -- 已匯出資料表的索引
@@ -60,7 +62,7 @@ ALTER TABLE `member`
 -- 使用資料表 AUTO_INCREMENT `member`
 --
 ALTER TABLE `member`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

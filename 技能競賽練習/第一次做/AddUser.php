@@ -10,9 +10,16 @@
     <div align="center">
         <span>新增會員</span>
         <form action="AddUserProcess.php" method="post">
+            姓名: <input type="text" name="name">
+            <p>
             帳號: <input type="text" name="user">
             <p>
             密碼: <input type="password" name="pwd">
+            <p></p>
+            權限
+            <p></p>
+            <input type="radio" name="rank" value="一般使用者">一般使用者
+            <input type="radio" name="rank" value="管理者">管理者
             <p></p>
             <input type="submit">
             <input type="reset">

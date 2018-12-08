@@ -25,6 +25,7 @@
     $sql->execute();
     while($row = $sql->fetch(PDO::FETCH_ASSOC)){
     ?>
+    
     <div align="center">        
         <table>
             <tr>

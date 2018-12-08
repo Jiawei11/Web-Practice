@@ -20,18 +20,19 @@
 			CreateCaptchaImg();
 		})
 	});
+
 	function CreateCaptchaImg(){
 		var Data = [];
 		for(var i = 1;i<=4;i++){
 			$.ajax({
 				url:'./Captcha/CaptchaText.php',
 				async:false,
-				success: function(e){
-					Data.push(e);
+				success: function(result){
+					Data.push(result);
 					var img = document.createElement('img');
-					img.src = './Captcha/CaptchaImg.php?Number=' + e;
+					img.src = './Captcha/CaptchaImg.php?Number=' + result;
 					$('#CaptchaImg').append(img);
-					$(img).attr('value',e);
+					$(img).attr('value',result);
 				}
 			})
 			Data.sort();

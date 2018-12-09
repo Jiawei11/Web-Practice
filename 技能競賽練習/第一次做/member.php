@@ -25,6 +25,7 @@
 					echo "會員專區";
 				}
 			?>
+			<a href="Logout.php">登出</a>
 		</span>
     </div>
 </body>

@@ -21,7 +21,7 @@
             <p></p>
             權限
             <p></p>
-            <input type="radio" name="rank" value="一般使用者">一般使用者
+            <input type="radio" name="rank" value="一般使用者" checked>一般使用者
             <input type="radio" name="rank" value="管理者">管理者
             <p></p>
             <input type="submit">

@@ -8,6 +8,9 @@
 </head>
 <body>
     <div align="center">
+        <a href="./member.php">功能區</a>
+    </div>
+    <div align="center">
         <span>新增會員</span>
         <form action="AddUserProcess.php" method="post">
             姓名: <input type="text" name="name">

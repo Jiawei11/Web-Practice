@@ -31,7 +31,7 @@
 					Data.push(result);
 					var img = document.createElement('img');
 					img.src = './Captcha/CaptchaImg.php?Number=' + result;
-					$('#CaptchaImg').append(img);
+					$(img).appendTo($('#CaptchaImg'));
 					$(img).attr('value',result);
 				}
 			})

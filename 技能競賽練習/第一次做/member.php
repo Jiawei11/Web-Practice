@@ -22,7 +22,7 @@
 					echo "<a href='MemberList.php'>會員清單</a>" . "<p>";
 					echo "<a href='AddUser.php'>新增會員</a>" . "<p>";
 				}else{
-					echo "會員專區";
+					echo "會員專區" ."<p>";
 				}
 			?>
 			<a href="Logout.php">登出</a>

@@ -45,7 +45,7 @@
 <?php
 	session_start();
 	if(isset($_SESSION['check']) == false){
-		$_SEESION['check'] = 0;
+		$_SESSION['chekc'] = 0;
 	}
 ?>
 <body>

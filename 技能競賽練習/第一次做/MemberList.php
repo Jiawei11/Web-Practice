@@ -8,8 +8,8 @@
     <style>
         table{
             border:1px solid black;
-            width:auto;
-            height:auto;
+            width:300px;
+            height:60px;
         }
     </style>
 </head>
@@ -73,6 +73,7 @@
                 </td>
             </tr>
         </table>
+        <p></p>
     </div>
 </body>
 <?php

@@ -21,6 +21,7 @@
 					echo "管理者專區" . "<p>";
 					echo "<a href='MemberList.php'>會員清單</a>" . "<p>";
 					echo "<a href='AddUser.php'>新增會員</a>" . "<p>";
+					echo "<a href='ActionList.php'>紀錄資料</a>" . "<p>";
 				}else{
 					echo "會員專區" ."<p>";
 				}

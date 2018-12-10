@@ -22,21 +22,21 @@
 	});
 
 	function CreateCaptchaImg(){
-		var Data = [];
+		var code = [];
 		for(var i = 1;i<=4;i++){
 			$.ajax({
 				url:'./Captcha/CaptchaText.php',
-				async:'false',
+				async:false,
 				success: function(result){
-					Data.push(result);
+					code.push(result);
 					var img = document.createElement('img');
 					img.src = './Captcha/CaptchaImg.php?Number=' + result;
 					$(img).appendTo($('#CaptchaImg'));
 					$(img).attr('value',result);
 				}
 			})
-			Data.sort();
-			$("[name=ans]").val(Data.join(''));
+			code.sort();
+			$("[name=ans]").val(code.join(''));
 		}
 	};
 </script>
@@ -45,7 +45,7 @@
 <?php
 	session_start();
 	if(isset($_SESSION['check']) == false){
-		$_SESSION['chekc'] = 0;
+		$_SEESION['check'] = 0;
 	}
 ?>
 <body>
@@ -59,15 +59,15 @@
             <P>
 			驗證碼:
 			<div id="CaptchaImg">
-
+			
 			</div>
 			<div>
 				<button type="button" id="CaptchaReset">驗證碼重新產生</button>
 			</div>
 			<div>
 				驗證碼輸入區:
-				<br>
-				<input type="text" name="CaptchaAns">
+			<br>
+			<input type="text" name="CaptchaAns">
 			</div>
 			<input type="hidden" name="ans">
 			<br>

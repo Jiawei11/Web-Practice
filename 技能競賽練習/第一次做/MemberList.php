@@ -26,7 +26,10 @@
     while($row = $sql->fetch(PDO::FETCH_ASSOC)){
     ?>
     
-    <div align="center">        
+    <div align="center">
+        <div>
+            
+        </div>    
         <table>
             <tr>
                 <th>編號</th>

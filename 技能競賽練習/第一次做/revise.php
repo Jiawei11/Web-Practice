@@ -20,6 +20,8 @@
             帳號: <input type="text" name="user" value=<?php echo $row['user'];  ?>><p></p>
             密碼: <input type="text" name="pwd" value=<?php echo $row['pwd'];  ?>><p></p>
             姓名: <input type="text" name="name" value=<?php echo $row['name'];  ?>><p></p>
+            權限: <input type="radio" name="rank" value="一般使用者" checked>一般使用者
+                  <input type="radio" name="rank" value="管理者">管理者<p></p>
             <input type="hidden" name="id" value=<?php echo $_GET['id']; ?>>
             <input type="submit">
             <input type="reset">

@@ -26,7 +26,7 @@
 		for(var i = 1;i<=4;i++){
 			$.ajax({
 				url:'./Captcha/CaptchaText.php',
-				async:false,
+				async:'false',
 				success: function(result){
 					Data.push(result);
 					var img = document.createElement('img');
@@ -59,7 +59,7 @@
             <P>
 			驗證碼:
 			<div id="CaptchaImg">
-			
+
 			</div>
 			<div>
 				<button type="button" id="CaptchaReset">驗證碼重新產生</button>

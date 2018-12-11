@@ -16,11 +16,29 @@
                 echo "<script>alert('登入成功。');location.href='./member.php';</script>";
             }else{
                 echo "<script>alert('二段驗證錯誤。');location.href='./login.php';</script>";
+                $action = $db->prepare('insert into records(user,time,result,action) values(:u,:t,:r,:a)');
+                $action->bindValue('u',$_SESSION['member']);
+                $action->bindValue('t',date('Y-m-d H:i:s'));
+                $action->bindValue('r',"失敗");
+                $action->bindValue('a',"登入");
+                $action->execute();
             }
         }else{
             echo "<script>alert('二段驗證錯誤。');location.href='./login.php';</script>";
+            $action = $db->prepare('insert into records(user,time,result,action) values(:u,:t,:r,:a)');
+            $action->bindValue('u',$_SESSION['member']);
+            $action->bindValue('t',date('Y-m-d H:i:s'));
+            $action->bindValue('r',"失敗");
+            $action->bindValue('a',"登入");
+            $action->execute();
         }
     }else{
         echo "<script>alert('請先登入帳號密碼');location.href='./login.php';</script>";
+        $action = $db->prepare('insert into records(user,time,result,action) values(:u,:t,:r,:a)');
+        $action->bindValue('u',$_SESSION['member']);
+        $action->bindValue('t',date('Y-m-d H:i:s'));
+        $action->bindValue('r',"失敗");
+        $action->bindValue('a',"登入");
+        $action->execute();
     }
 ?>

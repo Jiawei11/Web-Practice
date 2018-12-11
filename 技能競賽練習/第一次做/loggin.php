@@ -65,13 +65,7 @@
 	}else{
 		$_SESSION['member'] = $_POST['username'];
 		$_SESSION['Permission'] = $row['rank'];
-		$action = $db->prepare('insert into records(user,time,result,action) values(:u,:t,:r,:a)');
-		$action->bindValue('u',$_POST['username']);
-		$action->bindValue('t',date('Y-m-d H:i:s'));
-		$action->bindValue('r',"成功");
-		$action->bindValue('a',"登入");
-		$action->execute();
-		echo "<script>alert('登入成功');location.href='member.php'</script>";	
+		echo "<script>alert('登入成功');location.href='SecondCheck.php'</script>";	
 	}
 ?>
 </body>

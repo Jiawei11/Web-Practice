@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="jquery/jquery-3.3.1.min.js"></script>
+    <script src="jquery/jquery-ui.min.js"></script>
+    <script scr="jquery/jquery-ui.js"></script>
     <title>Document</title>
     <style>
         table{
@@ -12,11 +15,40 @@
             height:60px;
         }
     </style>
+    <script>
+        $(function(){
+            $('#btn').click(function(){
+                $('#resultdiv>table').remove();
+                $.ajax({
+                    url:'Datalist.php',
+                    type:'POST',
+                    data:{
+                        'KeyWord':$('[name=key]').val(),
+                        'who':$('[name=sort]:checked').val(),
+                        'Sort':$('[name=method]:checked').val()
+                    },
+                    success:function(e){
+                        $('#resultdiv').html(e);
+                    }
+                })
+            });
+        });
+    </script>
 </head>
 
 <body>
     <div align="center">
-        <a href="member.php">回功能區</a>
+        <a href="member.php">回功能區</a><p></p>
+        關鍵字:<P>
+            <input type="text" name="key"/><P>	
+            <input type="radio" name="sort" value="user"checked/>帳號
+            <input type="radio" name="sort" value="name"/>姓名
+            <input type="radio" name="sort" value="id"/>編號
+            <P>
+            <input type="radio" name="method" value="asc" checked />遞增
+            <input type="radio" name="method" value="desc"/>遞減
+            <P>
+            <input type="button" id="btn" value="查詢"/>
     </div>
     <?php
     include_once('link.php');
@@ -26,10 +58,7 @@
     while($row = $sql->fetch(PDO::FETCH_ASSOC)){
     ?>
     
-    <div align="center">
-        <div>
-            
-        </div>    
+    <div align="center" id="resultdiv">   
         <table>
             <tr>
                 <th>編號</th>
@@ -40,24 +69,16 @@
             </tr>
             <tr>
                 <td>
-                    <?php
-                        echo str_pad($row['id'],5,0,STR_PAD_LEFT);
-                    ?>
+                    <?php echo str_pad($row['id'],5,0,STR_PAD_LEFT); ?>
                 </td>
                 <td>
-                    <?php
-                     echo $row['user'];
-                    ?>
+                    <?php echo $row['user']; ?>
                 </td>
                 <td>
-                    <?php
-                        echo $row['pwd'];
-                    ?>
+                    <?php echo $row['pwd']; ?>
                 </td>
                 <td>
-                    <?php
-                        echo $row['name'];
-                    ?>
+                    <?php echo $row['name']; ?>
                 </td>
                 <td>
                     <?php

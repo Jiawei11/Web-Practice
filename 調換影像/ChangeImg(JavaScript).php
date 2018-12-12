@@ -25,11 +25,11 @@
 </head>
 <body>
     <div align="center">
-        <img src="g1.png" id="MainImg">
+        <img src="./images/g1.png" id="MainImg">
     </div>
     <div id="smallimg">
-        <img src="g2.png" onclick="ChangeImg(this);">
-        <img src="g3.jpg" onclick="ChangeImg(this);">
+        <img src="./images/g2.png" onclick="ChangeImg(this);">
+        <img src="./images/g3.jpg" onclick="ChangeImg(this);">
     </div>
 </body>
 </html>

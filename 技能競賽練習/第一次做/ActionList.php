@@ -14,7 +14,7 @@
     </style>
 </head>
 <div align="center">
-            <a href="member.php">回功能區</a>
+    <a href="member.php">回功能區</a>
 </div>
 <?php
     include_once('link.php');
@@ -32,10 +32,10 @@
                 <th>結果</th>
             </tr>
             <tr>
-            <td><?php echo $row['user']; ?></td>
-            <td><?php echo $row['time']; ?></td>
-            <td><?php echo $row['action']; ?></td>
-            <td><?php echo $row['result']; ?></td>
+                <td><?php echo $row['user']; ?></td>
+                <td><?php echo $row['time']; ?></td>
+                <td><?php echo $row['action']; ?></td>
+                <td><?php echo $row['result']; ?></td>
             </tr>
         </table>
         <p></p>

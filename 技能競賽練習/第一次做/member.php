@@ -4,9 +4,27 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="jquery/jquery-3.3.1.min.js"></script>
+    <script src="jquery/jquery-ui.min.js"></script>
+    <script scr="jquery/jquery-ui.js"></script>
 	<title>Member Cateogry</title>
 </head>
-
+	<script>
+		$(function(){
+			var a = setInterval(() => {
+				var check = confirm('繼續使用');
+				setInterval(() => {
+					if(check != false || check !=true){	
+						location.href ='logout.php';
+					}
+				}, 5000);
+				if(check == false){
+					location.href='logout.php';
+				}
+			}, (60000));
+			
+		});
+	</script>
 	<?php
 		session_start();
 		if(isset($_SESSION['member']) == false){

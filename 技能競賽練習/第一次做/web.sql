@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2018-12-10 12:30:47
+-- 產生時間： 2018-12-13 08:52:02
 -- 伺服器版本: 10.1.36-MariaDB
 -- PHP 版本： 5.6.38
 
@@ -47,6 +47,26 @@ INSERT INTO `member` (`id`, `name`, `user`, `pwd`, `rank`) VALUES
 -- --------------------------------------------------------
 
 --
+-- 資料表結構 `news`
+--
+
+CREATE TABLE `news` (
+  `id` int(11) NOT NULL,
+  `new_title` varchar(255) NOT NULL,
+  `new_css` mediumtext NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- 資料表的匯出資料 `news`
+--
+
+INSERT INTO `news` (`id`, `new_title`, `new_css`) VALUES
+(3, 'test', 'span{font-size:200px;color:#00ffff;}'),
+(4, 'test2', 'span{font-size:120px;color:#000000;background-color:#ff0000;}');
+
+-- --------------------------------------------------------
+
+--
 -- 資料表結構 `records`
 --
 
@@ -65,7 +85,9 @@ CREATE TABLE `records` (
 INSERT INTO `records` (`id`, `user`, `time`, `result`, `action`) VALUES
 (1, 'admin', '2018-12-10 18:37:28', '成功', '登入'),
 (2, 'admin', '2018-12-10 18:37:51', '失敗', '登入'),
-(3, 'admin', '2018-12-10 19:16:51', '成功', '登入');
+(3, 'admin', '2018-12-10 19:16:51', '成功', '登入'),
+(4, 'admin', '2018-12-13 07:03:35', '成功', '登入'),
+(5, 'admin', '2018-12-13 07:17:42', '成功', '登入');
 
 --
 -- 已匯出資料表的索引
@@ -75,6 +97,12 @@ INSERT INTO `records` (`id`, `user`, `time`, `result`, `action`) VALUES
 -- 資料表索引 `member`
 --
 ALTER TABLE `member`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- 資料表索引 `news`
+--
+ALTER TABLE `news`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -94,10 +122,16 @@ ALTER TABLE `member`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- 使用資料表 AUTO_INCREMENT `news`
+--
+ALTER TABLE `news`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- 使用資料表 AUTO_INCREMENT `records`
 --
 ALTER TABLE `records`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

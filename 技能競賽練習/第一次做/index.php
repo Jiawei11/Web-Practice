@@ -14,7 +14,8 @@
 
 <body>
 	<div align="center">
-        <a href="login.php">登入</a>
+        <a href="./user/login.php">汽車共乘登入</a><p></p>
+		<a href="./news/">電子報製作</a>
    	  <p>
 </div>
 </body>

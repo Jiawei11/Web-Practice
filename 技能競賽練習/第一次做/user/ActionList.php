@@ -20,7 +20,7 @@
     include_once('link.php');
     $sql = $db->prepare('select * from records');
     $sql->execute();
-    while($row=  $sql->fetch(PDO::FETCH_ASSOC)){
+    while($row =  $sql->fetch(PDO::FETCH_ASSOC)){
 ?>
 <body>
     <div align="center">

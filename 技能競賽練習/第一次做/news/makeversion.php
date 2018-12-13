@@ -1,10 +1,12 @@
 <?php
     include_once('link.php');
-    $css = "span{" . "font-size:" . $_POST['size'] . "px;" . "color:" . $_POST['color'] .";" . "background-color:" . $_POST['background-color']; .  ";}";
-    echo $css;
-    $sql = $db->prepare('insert into news(new_title,new_css) values(:title,:css)');
-    $sql->bindValue('title',$_POST['title']);
-    $sql->bindValue('css',$css);
+    $sql = $db->prepare('insert into news(news_title,news_img,news_summary,news_coin,news_link) values(:nt,:ni,:ns,:nc,:nl)');
+    $sql->bindValue('nt',$_POST['title']);
+    $sql->bindValue('ni',$_FILES['img']['name']);
+    $sql->bindValue('ns',$_POST['summary']);
+    $sql->bindValue('nc',$_POST['coin']);
+    $sql->bindValue('nl',$_POST['link']);
     $sql->execute();
-    header("Location:index.php");
+    move_uploaded_file($_FILES['img']['tmp_name'],"news_img/".$_FILES['img']['name']);
+    header('location:index.php');
 ?>

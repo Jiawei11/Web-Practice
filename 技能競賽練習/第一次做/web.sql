@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2018-12-13 08:52:02
+-- 產生時間： 2018-12-13 16:22:08
 -- 伺服器版本: 10.1.36-MariaDB
 -- PHP 版本： 5.6.38
 
@@ -52,17 +52,33 @@ INSERT INTO `member` (`id`, `name`, `user`, `pwd`, `rank`) VALUES
 
 CREATE TABLE `news` (
   `id` int(11) NOT NULL,
-  `new_title` varchar(255) NOT NULL,
-  `new_css` mediumtext NOT NULL
+  `news_title` varchar(255) NOT NULL,
+  `news_img` varchar(255) NOT NULL,
+  `news_summary` varchar(255) NOT NULL,
+  `news_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `news_coin` varchar(255) NOT NULL,
+  `news_link` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- 資料表的匯出資料 `news`
 --
 
-INSERT INTO `news` (`id`, `new_title`, `new_css`) VALUES
-(3, 'test', 'span{font-size:200px;color:#00ffff;}'),
-(4, 'test2', 'span{font-size:120px;color:#000000;background-color:#ff0000;}');
+INSERT INTO `news` (`id`, `news_title`, `news_img`, `news_summary`, `news_date`, `news_coin`, `news_link`) VALUES
+(2, '測試', 'Yu.png', '測試圖片上傳', '2018-12-13 15:20:32', '200', 'https://www.facebook.com'),
+(3, '測試', 'wp1921093.jpg', '測試圖片上傳2', '2018-12-13 15:19:12', '1000', 'https://www.facebook.com');
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `newstyle`
+--
+
+CREATE TABLE `newstyle` (
+  `id` int(11) NOT NULL,
+  `new_title` varchar(255) NOT NULL,
+  `new_css` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -106,6 +122,12 @@ ALTER TABLE `news`
   ADD PRIMARY KEY (`id`);
 
 --
+-- 資料表索引 `newstyle`
+--
+ALTER TABLE `newstyle`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- 資料表索引 `records`
 --
 ALTER TABLE `records`
@@ -125,7 +147,13 @@ ALTER TABLE `member`
 -- 使用資料表 AUTO_INCREMENT `news`
 --
 ALTER TABLE `news`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- 使用資料表 AUTO_INCREMENT `newstyle`
+--
+ALTER TABLE `newstyle`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- 使用資料表 AUTO_INCREMENT `records`

@@ -13,11 +13,12 @@
 <body>
     <div align="center">
         <span>製作版型</span>
-        <form action="./makeversion.php" method="post">
-            版型標題:<input type="text" name="title" placeholder="版型標題" required><p>
-            字型大小:<input type="number" name="size" placeholder="字型大小" required><p> 
-            文字顏色:<input type="color" name="color" required><p>
-            背景顏色:<input type="color" name="background-color" required><p>
+        <form action="./makeversion.php" method="post" enctype="multipart/form-data">
+            圖片:<input type="file" name="img"><p></p>
+            商品名稱:<input type="text" name="title"><p></p>
+            商品簡介:<input type="text" name="summary"><p></p>
+            商品價錢:<input type="text" name="coin"><p></p>
+            相關連結:<input type="text" name="link"><p></p>
             <input type="submit">
             <input type="reset">
         </form>

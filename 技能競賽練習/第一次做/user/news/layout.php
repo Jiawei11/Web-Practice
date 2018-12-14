@@ -12,7 +12,8 @@
 </head>
 <body>
     <div align="center">
-        <span>製作版型</span>
+        <a href="index.php">功能區</a><p>
+        <span>製作電子報</span>
         <form action="./makeversion.php" method="post" enctype="multipart/form-data">
             圖片:<input type="file" name="img"><p></p>
             商品名稱:<input type="text" name="title"><p></p>

@@ -16,8 +16,10 @@
 <div align="center">
     <a href="member.php">回功能區</a>
 </div>
+<p>
 <?php
     include_once('link.php');
+    date_default_timezone_set("Asia/Taipei");
     $sql = $db->prepare('select * from records');
     $sql->execute();
     while($row =  $sql->fetch(PDO::FETCH_ASSOC)){

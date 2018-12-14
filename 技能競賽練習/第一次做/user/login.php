@@ -11,12 +11,21 @@
 		font-size:40px;
 		color:red;
 	}
+	#CaptchaAnsImg>div{
+		border:1px solid #333;
+		height:40px;
+		width:40px;
+	}
+	#CaptchaAnsImg>div{
+		display:-webkit-inline-box;
+	}
 </style>
 <script>
 	$(function(){
 		CreateCaptchaImg();
 		$('#CaptchaReset').click(function(){
 			$('#CaptchaImg>img').remove();
+			$('#CaptchaAnsImg>div').remove();
 			CreateCaptchaImg();
 		})
 	});
@@ -33,10 +42,36 @@
 					img.src = './Captcha/CaptchaImg.php?Number=' + result;
 					$(img).appendTo($('#CaptchaImg'));
 					$(img).attr('value',result);
+					$('#CaptchaAnsImg').append('<div></div>');
 				}
 			})
 			code.sort();
 			$("[name=ans]").val(code.join(''));
+			$('#CaptchaImg>img').draggable({
+				snap:'#drop',
+				snapMode:'corner',
+				revert:'invalid'
+			});
+
+
+			function AddValue(){
+				var value = "";
+				$('#CaptchaAnsImg>div>img').each(function(){
+					value += $(this).attr('value');
+				});
+				$('[name=CaptchaAns').val(value);
+				return true;
+			};
+
+			$('#CaptchaAnsImg>div').droppable({
+				drop:function(event,ui){
+					ui.helper.appendTo(this).css({
+						'top':0,
+						'left':0
+					})
+					AddValue();
+				}
+			});
 		}
 	};
 </script>
@@ -59,17 +94,19 @@
             <P>
 			驗證碼:
 			<div id="CaptchaImg">
-			
+				<div></div>
 			</div>
 			<div>
 				<button type="button" id="CaptchaReset">驗證碼重新產生</button>
 			</div>
+			<p></p>
 			<div>
 				驗證碼輸入區:
-			<br>
-			<input type="text" name="CaptchaAns">
+				<div id="CaptchaAnsImg">
+				</div>
 			</div>
 			<input type="hidden" name="ans">
+			<input type="hidden" name="CaptchaAns" id="">
 			<br>
             <input type="submit" />
             <input type="reset" />

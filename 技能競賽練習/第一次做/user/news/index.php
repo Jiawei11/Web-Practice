@@ -14,8 +14,9 @@
 <body>
     <div align="center">
         <span style="font-size:60px;background-color:green;">商品電子報首頁</span>
-        <a href="layout.php">製作電子報</a>
-        <a href="search.php">查詢電子報</a>
+        <a href="../member.php">功能區</a>
+        <a href="./layout.php">製作電子報</a>
+        <a href="./search.php">查詢電子報</a>
         <p>
             <table>
                 <tr>

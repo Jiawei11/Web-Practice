@@ -14,10 +14,17 @@
 			var a = setInterval(() => {
 				var check = confirm('繼續使用');
 				setInterval(() => {
+					console.log(check);
 					if(check != false || check !=true){	
 						location.href ='logout.php';
 					}
 				}, 5000);
+				if(check==true){
+					check = true;
+				}else{
+					check =false;
+				}
+
 				if(check == false){
 					location.href='logout.php';
 				}
@@ -44,6 +51,7 @@
 					echo "會員專區" ."<p>";
 				}
 			?>
+			<a href="news">電子報製作</a><p>
 			<a href="Logout.php">登出</a>
 		</span>
     </div>

@@ -9,7 +9,7 @@
 <body>
 <?php
 	session_start();
-	date_default_timezone_set('Asia/Taipei');
+	date_default_timezone_set("Asia/Taipei");
 	include_once('link.php');
 	function err(){
 		$_SESSION['check'] +=1;
@@ -19,18 +19,6 @@
 		}	
 	}
 
-	function AddAction($reset){
-		if($reset == 0){
-			echo 1234;
-		}else{
-			$action = $db->prepare('insert into records(user,time,result,action) values(:u,:t,:r,:a)');
-			$action->bindValue('u',$_POST['username']);
-			$action->bindValue('t',date('Y-m-d H:i:s'));
-			$action->bindValue('r',"成功");
-			$action->bindValue('a',"登入");
-			$action->execute();
-		}
-	}
 	$sql = $db->prepare('select * from member where user=:user');
 	$sql->bindValue('user',$_POST['username']);
 	$sql->execute();

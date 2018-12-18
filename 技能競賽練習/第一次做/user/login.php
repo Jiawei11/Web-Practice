@@ -48,7 +48,7 @@
 			code.sort();
 			$("[name=ans]").val(code.join(''));
 			$('#CaptchaImg>img').draggable({
-				snap:'#drop',
+				snap:'#CaptchaAnsImg',
 				snapMode:'corner',
 				revert:'invalid'
 			});
@@ -66,6 +66,7 @@
 			$('#CaptchaAnsImg>div').droppable({
 				drop:function(event,ui){
 					ui.helper.appendTo(this).css({
+						
 						'top':0,
 						'left':0
 					})
@@ -94,6 +95,7 @@
             <P>
 			驗證碼:
 			<div id="CaptchaImg">
+
 				<div></div>
 			</div>
 			<div>

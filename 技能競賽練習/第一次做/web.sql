@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2018-12-13 16:22:08
--- 伺服器版本: 10.1.36-MariaDB
--- PHP 版本： 5.6.38
+-- 產生時間： 2018-12-19 13:09:49
+-- 伺服器版本: 10.1.37-MariaDB
+-- PHP 版本： 5.6.39
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -57,16 +57,16 @@ CREATE TABLE `news` (
   `news_summary` varchar(255) NOT NULL,
   `news_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `news_coin` varchar(255) NOT NULL,
-  `news_link` varchar(255) NOT NULL
+  `news_link` varchar(255) NOT NULL,
+  `news_version` varchar(255) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- 資料表的匯出資料 `news`
 --
 
-INSERT INTO `news` (`id`, `news_title`, `news_img`, `news_summary`, `news_date`, `news_coin`, `news_link`) VALUES
-(2, '測試', 'Yu.png', '測試圖片上傳', '2018-12-13 15:20:32', '200', 'https://www.facebook.com'),
-(3, '測試', 'wp1921093.jpg', '測試圖片上傳2', '2018-12-13 15:19:12', '1000', 'https://www.facebook.com');
+INSERT INTO `news` (`id`, `news_title`, `news_img`, `news_summary`, `news_date`, `news_coin`, `news_link`, `news_version`) VALUES
+(8, 'TEST', 'Penguins.jpg', 'TEST', '2018-12-19 11:21:10', '200', 'google.com.tw', 'TEST');
 
 -- --------------------------------------------------------
 
@@ -79,6 +79,13 @@ CREATE TABLE `newstyle` (
   `new_title` varchar(255) NOT NULL,
   `new_css` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- 資料表的匯出資料 `newstyle`
+--
+
+INSERT INTO `newstyle` (`id`, `new_title`, `new_css`) VALUES
+(1, 'TEST', 'span{color:#80ffff;font-size:200px;');
 
 -- --------------------------------------------------------
 
@@ -103,7 +110,8 @@ INSERT INTO `records` (`id`, `user`, `time`, `result`, `action`) VALUES
 (2, 'admin', '2018-12-10 18:37:51', '失敗', '登入'),
 (3, 'admin', '2018-12-10 19:16:51', '成功', '登入'),
 (4, 'admin', '2018-12-13 07:03:35', '成功', '登入'),
-(5, 'admin', '2018-12-13 07:17:42', '成功', '登入');
+(5, 'admin', '2018-12-13 07:17:42', '成功', '登入'),
+(6, 'admin', '2018-12-19 10:03:06', '成功', '登入');
 
 --
 -- 已匯出資料表的索引
@@ -147,19 +155,19 @@ ALTER TABLE `member`
 -- 使用資料表 AUTO_INCREMENT `news`
 --
 ALTER TABLE `news`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- 使用資料表 AUTO_INCREMENT `newstyle`
 --
 ALTER TABLE `newstyle`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- 使用資料表 AUTO_INCREMENT `records`
 --
 ALTER TABLE `records`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

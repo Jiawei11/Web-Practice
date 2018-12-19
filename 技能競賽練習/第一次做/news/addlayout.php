@@ -15,11 +15,10 @@
 
         $(function(){
             $('button').click(function(){
-                $.post('test.php',{
+                $.post('LoadCSS.php',{
                     title:$('[name=title').val(),
                     titlecolor:$('[name=titlecolor]').val(),
-                    size:$('[name=size]').val(),
-                    fontcolor:$('[name=fontcolor]').val()}
+                    size:$('[name=size]').val(),}
                     ,function(result){$('#LoadCss').html(result);});
             });
         });
@@ -31,15 +30,14 @@
         <button>預覽CSS</button><p></p>
         <form action="addlayoutProcess.php" method="post" onsubmit="return Check();">
             版型標題: <input type="text" name="title"><p></p>
-            標題顏色: <input type="color" name="titlecolor"><p></p>
             字型大小: <input type="text" name="size"><p></p>
-            字體顏色: <input type="color" name="fontcolor"><p></p>
+            字體顏色: <input type="color" name="titlecolor"><p></p>
             <input type="submit">
             <input type="reset">
         </form>
-        
+        <p></p>
+        <div style="background-color:#39f;color:white">CSS預覽:</div>
         <div id="LoadCss">
-
         </div>
     </div>
 </body>

@@ -7,7 +7,7 @@
     <title>製作電子報</title>
 </head>
 <body>
-    <form action="addVersionProcess.php" method="post">
+    <form action="addVersionProcess.php" method="post" enctype="multipart/form-data">
         <table align="center">
                 <tr>
                     <th>電子報製作</th>
@@ -23,12 +23,13 @@
                                 $sql->execute();
                                 while($row = $sql->fetch(PDO::FETCH_ASSOC)){
                                     echo $row['new_title'];
-                                    echo "<input type='radio' name='layout'>";
+                                    echo "<input type='radio' name='layout' value='{$row['new_title']}' required>";
                                 }
                             ?>
                         </span><p></p>
                         <span>商品名稱</span>
                         <input type="text" name="name"><p></p>
+                        <input type="file" name="img"><p></p>
                         <span>商品簡介</span>
                         <input type="text" name="summary"><p></p>
                         <span>費用</span>

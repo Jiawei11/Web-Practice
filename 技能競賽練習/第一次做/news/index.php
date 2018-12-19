@@ -14,6 +14,11 @@
             <a href="./addVersion.php">製作電子報</a>
             <a href="./SearchVersion.php">搜尋電子報</a>
         </div>
+        <div>
+            <?php
+                include_once('./link.php');
+            ?>
+        </div>
     </div>
 </body>
 </html>

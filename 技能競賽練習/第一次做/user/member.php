@@ -51,7 +51,6 @@
 					echo "會員專區" ."<p>";
 				}
 			?>
-			<a href="news">電子報製作</a><p>
 			<a href="Logout.php">登出</a>
 		</span>
     </div>

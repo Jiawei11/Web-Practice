@@ -6,7 +6,7 @@
         $Data = explode(",",$_POST['ans']);
         if(count($Data) == 3){
             Sort($Data);
-            if(array_search($Data,$Win)){
+            if(array_search($Data,$Win) >= 0){
                 $action = $db->prepare('insert into records(user,time,result,action) values(:u,:t,:r,:a)');
                 $action->bindValue('u',$_SESSION['member']);
                 $action->bindValue('t',date('Y-m-d H:i:s'));

@@ -15,6 +15,7 @@
 <body>
 	<div align="center">
         <a href="./user/login.php">汽車共乘登入</a><p></p>
+		<a href="./news">電子報</a>
    	  <p>
 </div>
 </body>

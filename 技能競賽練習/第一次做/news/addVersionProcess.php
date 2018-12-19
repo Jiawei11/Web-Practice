@@ -7,6 +7,6 @@
     $sql->bindValue('nc',$_POST['coin']);
     $sql->bindValue('nl',$_POST['link']);
     $sql->execute();
-    move_uploaded_file($_FILES['img']['tmp_name'],"news_img/".$_FILES['img']['name']);
+    move_uploaded_file($_FILES['img']['tmp_name'],"news_img/" . $_FILES['img']['name']);
     header('location:index.php');
 ?>

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2018-12-19 13:09:49
--- 伺服器版本: 10.1.37-MariaDB
--- PHP 版本： 5.6.39
+-- 產生時間： 2018-12-19 18:20:12
+-- 伺服器版本: 10.1.36-MariaDB
+-- PHP 版本： 5.6.38
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -66,7 +66,7 @@ CREATE TABLE `news` (
 --
 
 INSERT INTO `news` (`id`, `news_title`, `news_img`, `news_summary`, `news_date`, `news_coin`, `news_link`, `news_version`) VALUES
-(8, 'TEST', 'Penguins.jpg', 'TEST', '2018-12-19 11:21:10', '200', 'google.com.tw', 'TEST');
+(8, 'TEST', 'Penguins.jpg', 'TEST', '2018-12-19 15:47:43', '200', 'http://google.com.tw', 'TEST');
 
 -- --------------------------------------------------------
 
@@ -85,7 +85,8 @@ CREATE TABLE `newstyle` (
 --
 
 INSERT INTO `newstyle` (`id`, `new_title`, `new_css`) VALUES
-(1, 'TEST', 'span{color:#80ffff;font-size:200px;');
+(1, 'TEST', 'color:#80ffff;font-size:40px;'),
+(3, '廣度搜尋', 'color:#ff8080;font-size:111px;');
 
 -- --------------------------------------------------------
 
@@ -155,13 +156,13 @@ ALTER TABLE `member`
 -- 使用資料表 AUTO_INCREMENT `news`
 --
 ALTER TABLE `news`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- 使用資料表 AUTO_INCREMENT `newstyle`
 --
 ALTER TABLE `newstyle`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- 使用資料表 AUTO_INCREMENT `records`

@@ -23,12 +23,14 @@
     </script>
 </head>
 <body>
+    <br>
     <div align="center">
         <button class="btn btn-warning">CreateButton</button>
     </div>
     <p></p>
+    <hr>
     <div id="div1">
-    
+        
     </div>
 </body>
 </html>

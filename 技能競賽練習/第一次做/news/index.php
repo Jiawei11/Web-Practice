@@ -12,7 +12,7 @@
 
         img{
             width:100%;
-            height:100%;
+            height:50%;
         }
     </style>
 </head>
@@ -26,6 +26,10 @@
         </div>
         <p></p>
         <div width="700px;">
+            <div align="center">
+                關鍵字: <input type="text" name="keyword"><p></p>
+                價錢: <input type="checkbox" name="radio">
+            </div>
             <?php
                 include_once('./link.php');
                 $sql = $db->query('select * from news');

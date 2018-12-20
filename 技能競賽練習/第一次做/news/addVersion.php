@@ -5,9 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>製作電子報</title>
+    <script>
+        function check(){
+            return (confirm('確定要新增嗎?') == true ? true : false);
+        }
+    </script>
 </head>
 <body>
-    <form action="addVersionProcess.php" method="post" enctype="multipart/form-data">
+    <form action="addVersionProcess.php" method="post" onsubmit="return check();" enctype="multipart/form-data">
         <table align="center">
                 <tr>
                     <th>電子報製作</th>

@@ -6,9 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>電子報</title>
     <style>
+        body{
+            user-select:none;
+        }
+
         img{
-            width:280px;
-            height:350px;
+            width:100%;
+            height:100%;
         }
     </style>
 </head>
@@ -20,6 +24,7 @@
             <a href="./addVersion.php">製作電子報</a>
             <a href="./SearchVersion.php">搜尋電子報</a>
         </div>
+        <p></p>
         <div width="700px;">
             <?php
                 include_once('./link.php');
@@ -30,7 +35,7 @@
                     $sql2->execute();
                     $record = $sql2->fetch(PDO::FETCH_ASSOC);
             ?>
-                <table style="<?php echo $record['new_css'];  ?>" width="350px;">
+                <table style="<?php echo $record['new_css']; ?>;background-color:black;" width="400px;">
                     <tr>
                         <th><?php echo $row['news_title']; ?></th>
                         <th><?php echo $row['news_coin']; ?></th>
@@ -46,6 +51,7 @@
                         </td>
                     </tr>
                 </table>
+                <p></p>
             <?php
                 }
             ?>

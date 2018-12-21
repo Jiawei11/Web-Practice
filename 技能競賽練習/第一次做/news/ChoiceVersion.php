@@ -1,20 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>選擇版型</title>
-</head>
-<body>
-    <?php
-        include_once('./link.php');
-        $sql = $db->query('select * from version');
-        while($row = $sql->fetch(PDO::FETCH_ASSOC)){
-    ?>
-        
-    <?php
-        }
-    ?>
-</body>
-</html>
+<?php
+    include_once('./link.php');
+    $sql = $db->query('select * from version');
+    while($row = $sql->fetch(PDO::FETCH_ASSOC)){
+        echo "<td><input type='radio' name='version' value={$row['title']} checked>{$row['title']}</td>";
+    }
+?>

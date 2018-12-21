@@ -22,7 +22,7 @@
                     var Str = Data.innerText.toString();
                     if(Str != ""){Arr.push(Str)};
                 };
-                $.post('addlayoutprocess.php',{key:Arr},function(result){
+                $.post('addlayoutprocess.php',{key:Arr,title:$('[name=title]').val()},function(result){
                     $('#div1').html(result);
                 })
             });

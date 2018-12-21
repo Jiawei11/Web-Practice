@@ -24,10 +24,8 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td id="Data">
-                        <div>123</div>
-                    </td>
+                <tr id="Data">
+                    <div id="div1"></div>
                 </tr>
             </tbody>
         </table>

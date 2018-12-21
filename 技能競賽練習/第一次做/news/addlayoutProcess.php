@@ -1,9 +1,7 @@
 <?php
-    include_once('./link.php');
-    $sql = $db->prepare('insert into newstyle(new_title,new_css) values(:title,:css)');
-    $css = "color:" . $_POST['titlecolor'] . ";font-size:" . $_POST['size'] . "px;";
-    $sql->bindValue('title',$_POST['title']);
-    $sql->bindValue('css',$css);
-    $sql->execute();
-    header('location:addVersion.php');
+    // include_once('link.php');
+    // $sql = $db->prepare('insert into version(col1,col2,col3,col4,col5,col6) values(:c1,:c2,:c3,:c4,:c5,:c6)');
+
+    // $sql->execute();
+    print_r($_POST['key']);
 ?>

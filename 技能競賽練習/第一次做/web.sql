@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2018-12-19 18:20:12
--- 伺服器版本: 10.1.36-MariaDB
--- PHP 版本： 5.6.38
+-- 產生時間： 2018-12-21 14:07:05
+-- 伺服器版本: 10.1.37-MariaDB
+-- PHP 版本： 5.6.39
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -71,26 +71,6 @@ INSERT INTO `news` (`id`, `news_title`, `news_img`, `news_summary`, `news_date`,
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `newstyle`
---
-
-CREATE TABLE `newstyle` (
-  `id` int(11) NOT NULL,
-  `new_title` varchar(255) NOT NULL,
-  `new_css` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- 資料表的匯出資料 `newstyle`
---
-
-INSERT INTO `newstyle` (`id`, `new_title`, `new_css`) VALUES
-(1, 'TEST', 'color:#80ffff;font-size:40px;'),
-(3, '廣度搜尋', 'color:#ff8080;font-size:111px;');
-
--- --------------------------------------------------------
-
---
 -- 資料表結構 `records`
 --
 
@@ -114,6 +94,22 @@ INSERT INTO `records` (`id`, `user`, `time`, `result`, `action`) VALUES
 (5, 'admin', '2018-12-13 07:17:42', '成功', '登入'),
 (6, 'admin', '2018-12-19 10:03:06', '成功', '登入');
 
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `version`
+--
+
+CREATE TABLE `version` (
+  `id` int(11) NOT NULL,
+  `col1` varchar(255) NOT NULL,
+  `col2` varchar(255) NOT NULL,
+  `col3` varchar(255) NOT NULL,
+  `col4` varchar(255) NOT NULL,
+  `col5` varchar(255) NOT NULL,
+  `col6` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 --
 -- 已匯出資料表的索引
 --
@@ -131,15 +127,15 @@ ALTER TABLE `news`
   ADD PRIMARY KEY (`id`);
 
 --
--- 資料表索引 `newstyle`
---
-ALTER TABLE `newstyle`
-  ADD PRIMARY KEY (`id`);
-
---
 -- 資料表索引 `records`
 --
 ALTER TABLE `records`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- 資料表索引 `version`
+--
+ALTER TABLE `version`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -159,16 +155,16 @@ ALTER TABLE `news`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- 使用資料表 AUTO_INCREMENT `newstyle`
---
-ALTER TABLE `newstyle`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
 -- 使用資料表 AUTO_INCREMENT `records`
 --
 ALTER TABLE `records`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- 使用資料表 AUTO_INCREMENT `version`
+--
+ALTER TABLE `version`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

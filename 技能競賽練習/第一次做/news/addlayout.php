@@ -5,40 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>製作版型</title>
-    <script src="jquery/jquery-3.3.1.min.js"></script>
-    <script src="jquery/jquery-ui.min.js"></script>
-    <script scr="jquery/jquery-ui.js"></script>
+    <script src="./jquery/jquery-3.3.1.min.js"></script>
+    <script src="./jquery/jquery-ui.min.js"></script>
+    <script src="./jquery/jquery-ui.js"></script>
+    <link rel="stylesheet" href="news.css">
     <script>
-        function Check(){
-           return (confirm('確定要新增嗎?') == true) ? true : false;
-        }
-
         $(function(){
-            $('button').click(function(){
-                $.post('LoadCSS.php',{
-                    title:$('[name=title').val(),
-                    titlecolor:$('[name=titlecolor]').val(),
-                    size:$('[name=size]').val(),}
-                    ,function(result){$('#LoadCss').html(result);});
+            $('table tbody tr').sortable({
+                containment:'table',
+            });
+            $('table tbody tr').disableSelection();
+            $('[type=submit]').click(function(){
+                var Arr = [];
+                for(var i =0;i<=$('table tbody tr *').length-1;i++){
+                    var Data = $('table tbody tr *')[i];
+                    var Str = Data.innerText.toString();
+                    if(Str != ""){Arr.push(Str)};
+                };
+                $.post('addlayoutprocess.php',{key:Arr},function(result){
+                    $('#div1').html(result);
+                })
             });
         });
     </script>
 </head>
 <body>
-    <div align="center">
-        <a href="./">回首頁</a><p></p>
-        <button>預覽CSS</button><p></p>
-        <form action="addlayoutProcess.php" method="post" onsubmit="return Check();">
-            版型標題: <input type="text" name="title"><p></p>
-            字型大小: <input type="text" name="size"><p></p>
-            字體顏色: <input type="color" name="titlecolor"><p></p>
-            <input type="submit">
-            <input type="reset">
-        </form>
-        <p></p>
-        <div style="background-color:#39f;color:white">CSS預覽:</div>
-        <div id="LoadCss">
-        </div>
+    <table>
+        <tbody>
+            <div align="center">
+                版型名稱<input type="text" name="title" required>
+            </div>
+            <p></p>
+            <tr id="Data">
+                <td name="item_money" value="item_money">費用</td>
+                <td name="item_img" value="item_img">相片<img src="https://google.com.tw//logos/doodles/2018/winter-solstice-2018-northern-hemisphere-5609689915064320-s.png" value="相片"></td>
+                <td name="item_name" value="item_name">商品名稱</td>
+                <td name="item_summary" value="item_summary">商品簡介</td>
+                <td name="item_date" value="item_date">發佈日期</td>
+                <td name="item_link" value="item_link">相關連結</td>              
+            </tr>
+            <div align="center">
+                <input type="submit">
+            </div>
+        </tbody>
+    </table>
+    <div id="div1">
+        
     </div>
 </body>
 </html>

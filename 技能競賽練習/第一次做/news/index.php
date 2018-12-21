@@ -21,7 +21,7 @@
         <div style="background-color:aqua;">
             <span style="font-size:50px;">商品電子報首頁</span>
             <a href="../">回首頁</a>
-            <a href="./addVersion.php">製作電子報</a>
+            <a href="./createnews.php">製作電子報</a>
             <a href="./SearchVersion.php">搜尋電子報</a>
         </div>
         <p></p>

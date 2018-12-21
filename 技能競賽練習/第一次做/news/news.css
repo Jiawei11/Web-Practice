@@ -1,0 +1,13 @@
+table{
+    border:1px solid #ccc;
+    margin: 0 auto;
+}
+
+a{
+    text-decoration:none;
+    color:black;
+}
+
+table tbody tr{
+    height:200px;
+}

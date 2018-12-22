@@ -12,22 +12,17 @@
     <script src="news.js"></script>
 </head>
 <body>
-    <form action="addVersionProcess.php" method="post" onsubmit="return check();" enctype="multipart/form-data">
+    <form action="send.php" method="post" onsubmit="return confirm('確定要新增嗎?');" enctype="multipart/form-data">
         <table>
             <thead>
                 <tr>
-                    <th><input type="button" id="btn1" value="選擇版型"></button></th>
-                    <th><input type="button" id="btn2" value="填寫資料"></button></th>
-                    <th><input type="button" id="btn3" value="預覽"></button></th>
+                    <th><a href="choiceversion.php">選擇版型</a></th>
+                    <th><a href="write.php">填寫資料</a></th>
+                    <th><a href="loadversion.php">預覽</a></th>
                     <th><input  id="submit" type="submit" value="確定送出"></th>
                     <th><button><a href="./">回首頁</a></button></th>
                 </tr>
             </thead>
-            <tbody>
-                <tr id="Data">
-                    <div id="div1"></div>
-                </tr>
-            </tbody>
         </table>
     </form>
 </body>

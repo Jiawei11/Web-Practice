@@ -30,35 +30,6 @@
                 關鍵字: <input type="text" name="keyword"><p></p>
                 價錢: <input type="checkbox" name="radio">
             </div>
-            <?php
-                include_once('./link.php');
-                $sql = $db->query('select * from news');
-                while($row=$sql->fetch(PDO::FETCH_ASSOC)){
-                    $sql2 = $db->prepare('select new_css,new_title from newstyle where new_title = :check');
-                    $sql2->bindValue('check',$row['news_version']);
-                    $sql2->execute();
-                    $record = $sql2->fetch(PDO::FETCH_ASSOC);
-            ?>
-                <table style="<?php echo $record['new_css']; ?>;background-color:black;" width="400px;">
-                    <tr>
-                        <th><?php echo $row['news_title']; ?></th>
-                        <th><?php echo $row['news_coin']; ?></th>
-                    </tr>
-                    <tr>
-                        <td>
-                            <img src="news_img/<?php echo $row['news_img']; ?>">
-                        </td>
-                        <td>
-                            <?php echo $row['news_summary']; ?><p></p>
-                            <?php echo $row['news_date']; ?><p></p>
-                            <a href="<?php echo $row['news_link']; ?>">相關連結</a>
-                        </td>
-                    </tr>
-                </table>
-                <p></p>
-            <?php
-                }
-            ?>
         </div>
     </div>
 </body>

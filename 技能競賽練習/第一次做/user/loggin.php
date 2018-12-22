@@ -34,12 +34,6 @@
 		echo '<script>alert("帳號有誤");location.href="login.php"</script>';	
 	}elseif($row['pwd'] != $_POST['pwd']){
 		err();
-		$action = $db->prepare('insert into records(user,time,result,action) values(:u,:t,:r,:a)');
-		$action->bindValue('u',$_POST['username']);
-		$action->bindValue('t',date('Y-m-d H:i:s'));
-		$action->bindValue('r',"失敗");
-		$action->bindValue('a',"登入");
-		$action->execute();
 		echo '<script>alert("密碼有誤");location.href="login.php"</script>';
 	}elseif($_POST['CaptchaAns'] != $_POST['ans']){
 		err();

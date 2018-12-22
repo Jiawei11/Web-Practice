@@ -19,18 +19,18 @@
                 var Arr = [];
                 for(var i =0;i<=$('table tbody tr *').length-1;i++){
                     var Data = $('table tbody tr *')[i];
-                    var Str = Data.innerText.toString();
+                    var Str = Data.innerText.toString().replace('\n','');
                     if(Str != ""){Arr.push(Str)};
                 };
-                $.post('addlayoutprocess.php',{key:Arr,title:$('[name=title]').val()},function(result){
-                    $('#div1').html(result);
-                })
+                console.log(Arr);
+                $.post('addlayoutprocess.php',{key:Arr,title:$('[name=title]').val()});
             });
         });
     </script>
 </head>
 <body>
     <table>
+        <form action="addlayoutprocess.php" method="post">
         <tbody>
             <div align="center">
                 版型名稱<input type="text" name="title" required>
@@ -48,6 +48,7 @@
                 <input type="submit">
             </div>
         </tbody>
+        </form>
     </table>
     <div id="div1">
         

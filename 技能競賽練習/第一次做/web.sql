@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2018-12-21 18:15:58
--- 伺服器版本: 10.1.36-MariaDB
--- PHP 版本： 5.6.38
+-- 產生時間： 2018-12-22 12:52:05
+-- 伺服器版本: 10.1.37-MariaDB
+-- PHP 版本： 5.6.39
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -66,7 +66,9 @@ CREATE TABLE `news` (
 --
 
 INSERT INTO `news` (`id`, `news_title`, `news_img`, `news_summary`, `news_date`, `news_coin`, `news_link`, `news_version`) VALUES
-(8, 'TEST', 'Penguins.jpg', 'TEST', '2018-12-19 15:47:43', '200', 'http://google.com.tw', 'TEST');
+(8, 'TEST', 'Penguins.jpg', 'TEST', '2018-12-19 15:47:43', '200', 'http://google.com.tw', 'TEST'),
+(10, 'title', 'desert.jpg', 'summary', '2018-12-22 11:34:12', '123', 'google', '測試版型3'),
+(11, 'title', 'desert.jpg', 'summary', '2018-12-22 11:34:31', '123', 'google', '測試版型3');
 
 -- --------------------------------------------------------
 
@@ -92,7 +94,8 @@ INSERT INTO `records` (`id`, `user`, `time`, `result`, `action`) VALUES
 (3, 'admin', '2018-12-10 19:16:51', '成功', '登入'),
 (4, 'admin', '2018-12-13 07:03:35', '成功', '登入'),
 (5, 'admin', '2018-12-13 07:17:42', '成功', '登入'),
-(6, 'admin', '2018-12-19 10:03:06', '成功', '登入');
+(6, 'admin', '2018-12-19 10:03:06', '成功', '登入'),
+(7, 'admin', '2018-12-22 11:29:30', '成功', '登入');
 
 -- --------------------------------------------------------
 
@@ -116,8 +119,7 @@ CREATE TABLE `version` (
 --
 
 INSERT INTO `version` (`id`, `title`, `col1`, `col2`, `col3`, `col4`, `col5`, `col6`) VALUES
-(3, '測試版型1', '費用	', '相片	', '商品名稱	', '商品簡介	', '發佈日期	', '相關連結'),
-(4, '測試版型2', '相片	', '商品簡介	', '商品名稱	', '費用', '發佈日期	', '相關連結');
+(15, '測試版型3', '發佈日期', '費用', '相關連結', '商品簡介', '相片', '商品名稱');
 
 --
 -- 已匯出資料表的索引
@@ -161,19 +163,19 @@ ALTER TABLE `member`
 -- 使用資料表 AUTO_INCREMENT `news`
 --
 ALTER TABLE `news`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- 使用資料表 AUTO_INCREMENT `records`
 --
 ALTER TABLE `records`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- 使用資料表 AUTO_INCREMENT `version`
 --
 ALTER TABLE `version`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

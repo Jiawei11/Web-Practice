@@ -5,15 +5,11 @@ $(function () {
         $.ajax({
             url: 'ChoiceVersion.php',
             success: function (result) {
-                $('#Data').first().html(result);
+                $('#div1').first().html(result);
             }
         })
     })
 })
-
-function check() {
-    return confirm('確定要新增嗎?');
-};
 
 function Re() {
     $('#Data').first().text('');

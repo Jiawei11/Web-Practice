@@ -9,4 +9,5 @@
     $sql->bindValue('c5',$_POST['key'][4]);
     $sql->bindValue('c6',$_POST['key'][5]);
     $sql->execute();
+    echo "<script>alert('新增完成');location.href='createnews.php';</script>";
 ?>

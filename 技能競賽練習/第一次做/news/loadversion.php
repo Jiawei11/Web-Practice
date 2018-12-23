@@ -25,7 +25,7 @@
                 echo $_SESSION['item_name']; 
                 break;
             case "相片":
-                echo $_SESSION['item_img']['name']; 
+                echo "<img src='news_img/{$_SESSION['item_img']['name']}'"; 
                 break;
         }
     }
@@ -42,6 +42,11 @@
             border:1px solid #ccc;
             margin:auto auto;
             text-align:center;
+        }
+
+        img{
+            width:100px;
+            height: 100px;
         }
     </style>
 </head>

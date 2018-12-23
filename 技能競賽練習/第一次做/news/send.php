@@ -9,6 +9,5 @@
     $sql->bindValue('nl',$_SESSION['item_link']);
     $sql->bindValue('nv',$_SESSION['title']);
     $sql->execute();
-    move_uploaded_file($_SESSION['item_img']['tmp_name'],'news_img/' . $_SESSION['item_img']['name']);
     echo "<script>alert('新增完成。');location.href='createnews.php';</script>";
 ?>

@@ -29,6 +29,10 @@
     </script>
 </head>
 <body>
+    <div align="center">
+        <a href="createnews.php">功能區</a>
+    </div>
+    <p></p>
     <table>
         <form action="addlayoutprocess.php" method="post">
         <tbody>

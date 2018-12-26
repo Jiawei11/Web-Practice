@@ -8,6 +8,7 @@
 </head>
 <body align="center">
     <a href="createnews.php">功能區</a>
+    <a href="addlayout.php">新增版型</a>
     <p></p>
     <h1>選擇版型</h1><p></p>
     <form action="choiceprocess.php" method="get">

@@ -7,7 +7,7 @@
     $sql->bindValue('ns',$_SESSION['item_summary']);
     $sql->bindValue('nc',$_SESSION['item_money']);
     $sql->bindValue('nl',$_SESSION['item_link']);
-    $sql->bindValue('nv',$_SESSION['title']);
+    $sql->bindValue('nv',$_SESSION['item_title']);
     $sql->execute();
     echo "<script>alert('新增完成。');location.href='createnews.php';</script>";
 ?>

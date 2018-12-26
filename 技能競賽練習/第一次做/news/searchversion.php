@@ -17,6 +17,11 @@
             });
         });
     </script>
+    <style>
+        img{
+            width:500px;
+        }
+    </style>
 </head>
 <body>
     <div align="center">

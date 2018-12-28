@@ -3,5 +3,5 @@
     "editor.formatOnSave": true,
     "editor.fontSize": 20,
     "files.autoSave": "afterDelay",
-    "window.zoomLevel": -1
+    "window.zoomLevel": 1
 }

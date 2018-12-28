@@ -4,22 +4,26 @@
     if(isset($_SESSION['version']) == false){
         echo "<script>alert('未選擇版型。');location.href='createnews.php';</script>";
     }
-
+    
+    
+    
+    
+    
     function checkcol($data){
         switch($data){
-            case "費用":
+            case "news_coin":
                 text($name = "item_money");
                 break;
-            case "相關連結":
+            case "news_link":
                 text($name = "item_link");
                 break;
-            case "商品簡介":
+            case "news_summary":
                 text($name = "item_summary");
                 break;
-            case "商品名稱":
+            case "news_title":
                 text($name = "item_name");
                 break;
-            case "相片":
+            case "news_img":
                 text($name = "item_img");
                 break;
         }

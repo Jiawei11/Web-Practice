@@ -66,7 +66,6 @@
 			$('#CaptchaAnsImg>div').droppable({
 				drop:function(event,ui){
 					ui.helper.appendTo(this).css({
-						
 						'top':0,
 						'left':0
 					})

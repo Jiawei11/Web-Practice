@@ -53,24 +53,40 @@
 				return true;
 			};
 
+        var index = 0;
         $(function(){
             CreateImg();
             $('#btn').click(function(){
-                console.log(1);
                 $('#captchaimg>img').remove();
                 $('#catpchans>div').remove();
                 CreateImg();
             });
-        })
 
-        var index = 0;
+            $('[name=name]').click(function(){
+                $('#big').attr('src',"./img/" + $(this).val());
+                index = $(this).val().split('.')[0]-1;
+                r();
+            })
+        })
+        
         setInterval(()=>{
             $(function(){
                 if(index==$('#sm>img').length){index=0;}
                 $('#big').attr('src',$('#sm>img')[index].src);
+                r();
                 index ++;
             });
         },2000)
+
+        function r(){
+            $('[name=name]').each(function(){
+                    if($(this).val() == $('#sm>img')[index].src.split("/").pop()){
+                        $(this).css("background-color",'red');
+                    }else{
+                        $(this).css('background-color','white');
+                    }
+                })
+        }
     </script>
 
     <style>
@@ -88,6 +104,11 @@
 
         th>img{
             width:70%;
+        }
+
+        #big{
+            width:50%;
+            height:50%;
         }
     </style>
 </head>
@@ -123,6 +144,7 @@
                         $sql = $db->query('select * from img');
                         while($row=$sql->fetch(PDO::FETCH_ASSOC)){
                             echo "<img src=./img/{$row['name']}>";
+                            echo "<input type='button' style='background-color:white;' name='name' value={$row['name']}>";
                         }
                     ?>
                 </div>

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2019-01-01 15:53:13
--- 伺服器版本: 10.1.36-MariaDB
--- PHP 版本： 5.6.38
+-- 產生時間： 2019-01-02 04:46:22
+-- 伺服器版本: 10.1.37-MariaDB
+-- PHP 版本： 5.6.39
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -65,6 +65,35 @@ CREATE TABLE `member` (
 INSERT INTO `member` (`id`, `user`, `pwd`, `date`) VALUES
 (1, 'admin', '1234', '2018-12-28 18:01:40');
 
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `msg`
+--
+
+CREATE TABLE `msg` (
+  `id` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `mail` text NOT NULL,
+  `mailbool` varchar(255) NOT NULL,
+  `phone` varchar(255) NOT NULL,
+  `phonebool` varchar(255) NOT NULL,
+  `content` varchar(255) NOT NULL,
+  `nxcode` varchar(255) NOT NULL,
+  `deldate` datetime NOT NULL,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `rootrequest` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- 資料表的匯出資料 `msg`
+--
+
+INSERT INTO `msg` (`id`, `username`, `mail`, `mailbool`, `phone`, `phonebool`, `content`, `nxcode`, `deldate`, `date`, `rootrequest`) VALUES
+(4, 'admin', 'zxc45552222@gmail.com', '', '13412421412', '1', 'test', 'AAA111', '2019-01-02 09:37:53', '2019-01-02 01:37:53', ''),
+(5, 'admin', 'zxc45552222@gmail.com', '0', '123', '0', 'test', 'AAA111', '2019-01-02 09:38:31', '2019-01-02 01:38:31', ''),
+(6, 'admin', 'zxc45552222@gmail.com', '1', '123', '0', 'test', 'AAA111', '2019-01-02 09:38:41', '2019-01-02 01:38:41', '');
+
 --
 -- 已匯出資料表的索引
 --
@@ -82,6 +111,12 @@ ALTER TABLE `member`
   ADD PRIMARY KEY (`id`);
 
 --
+-- 資料表索引 `msg`
+--
+ALTER TABLE `msg`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- 在匯出的資料表使用 AUTO_INCREMENT
 --
 
@@ -96,6 +131,12 @@ ALTER TABLE `img`
 --
 ALTER TABLE `member`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- 使用資料表 AUTO_INCREMENT `msg`
+--
+ALTER TABLE `msg`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -76,7 +76,7 @@
             留言序號: <input type="text" name="nxcode"><p></p>
             <input type="submit">
             <input type="reset">
-            <input type="file" name="files[]" multiple>
+            <!-- <input type="file" name="files[]" multiple> -->
         </form>
     </div>
 </body>

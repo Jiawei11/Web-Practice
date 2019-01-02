@@ -49,9 +49,15 @@
                 <td><?php echo $row['mailbool'] == 1? $row['mail'] : "不顯示"?></td>
                 <td><?php echo $row['phonebool'] == 1? $row['phone'] : "不顯示" ?></td>
                 <td><?php echo $row['date']; ?></td>
-                <td><?php echo $row['rootrequest'] == "" ? "還未回復" : $row['rootrequest']; ?></td>
-                <td><?php echo $row['deldate']==$row['date'] ? "未刪除" : $row['deldate']; ?></td>
+                <td><?php echo $row['rootrequest'] == "" ? "未回覆" : $row['rootrequest'] ?></td>
+                <td><?php echo $row['userrequest']=="" ? "" : $row['userrequest']; ?></td>
                 <td>
+                    <?php
+                        $str = explode(" ",$row['userrequest'])[0];
+                        if($str == "刪除於"){
+                            continue;
+                        }
+                    ?>
                     <a href="">修改</a>
                     <a href="">刪除</a>
                 </td>

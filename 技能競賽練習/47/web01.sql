@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2019-01-02 04:46:22
+-- 產生時間： 2019-01-02 13:37:30
 -- 伺服器版本: 10.1.37-MariaDB
 -- PHP 版本： 5.6.39
 
@@ -80,19 +80,19 @@ CREATE TABLE `msg` (
   `phonebool` varchar(255) NOT NULL,
   `content` varchar(255) NOT NULL,
   `nxcode` varchar(255) NOT NULL,
-  `deldate` datetime NOT NULL,
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `rootrequest` varchar(255) NOT NULL
+  `rootrequest` varchar(255) NOT NULL,
+  `userrequest` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- 資料表的匯出資料 `msg`
 --
 
-INSERT INTO `msg` (`id`, `username`, `mail`, `mailbool`, `phone`, `phonebool`, `content`, `nxcode`, `deldate`, `date`, `rootrequest`) VALUES
-(4, 'admin', 'zxc45552222@gmail.com', '', '13412421412', '1', 'test', 'AAA111', '2019-01-02 09:37:53', '2019-01-02 01:37:53', ''),
-(5, 'admin', 'zxc45552222@gmail.com', '0', '123', '0', 'test', 'AAA111', '2019-01-02 09:38:31', '2019-01-02 01:38:31', ''),
-(6, 'admin', 'zxc45552222@gmail.com', '1', '123', '0', 'test', 'AAA111', '2019-01-02 09:38:41', '2019-01-02 01:38:41', '');
+INSERT INTO `msg` (`id`, `username`, `mail`, `mailbool`, `phone`, `phonebool`, `content`, `nxcode`, `date`, `rootrequest`, `userrequest`) VALUES
+(4, 'admin', 'zxc45552222@gmail.com', '', '13412421412', '1', 'test', 'AAA111', '2019-01-02 11:31:20', '', ''),
+(5, 'admin', 'zxc45552222@gmail.com', '0', '123', '0', 'test', 'AAA111', '2019-01-02 01:38:31', '', ''),
+(6, 'admin', 'zxc45552222@gmail.com', '1', '123', '0', 'test', 'AAA111', '2019-01-02 01:38:41', '', '');
 
 --
 -- 已匯出資料表的索引

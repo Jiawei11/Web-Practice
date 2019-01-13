@@ -25,11 +25,15 @@
 	span:hover{
 		cursor:pointer;
 	}
+
+	div{
+		background:#39f;
+	}
 </style>
 </head>
 
-<body>
-<div style="background-color:#39C">
+<body">
+	<div>
 		<span id="navbar" width="80%;">Data Processing</span>
 			<span style="margin:520px;">
 				<?php

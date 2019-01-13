@@ -16,6 +16,15 @@
                 CreateCalendar($(this).attr('value'));
             })
 
+
+            $('#ND tr td').click(function(){
+                if(typeof($(this).attr('value')) == "undefined"){
+                    alert('該月份沒有該日期');
+                }else{
+                    alert($(this).attr('value'));
+                }
+            })
+
             function CreateCalendar(date){
                 $('#ND *').remove();
                 $.ajax({
@@ -27,17 +36,46 @@
                         date:date
                     },
                     success:function(result){
+                        $.ajax({
+                            url:'test.php',
+                            dataType:'json',
+                            async:false,
+                            success:function(res){
+                                a = res;
+                            }
+                        })
+
+                        bool = false;
                         Object.keys(result['date']).forEach(function(x){
                             $('#ND').append('<tr></tr>');
                             for(var i =0;i<7;i++){
                                 $('#ND tr').last().append('<td></td>');
                             }
+
+                            var str = "";
+                            Object.keys(a.apply.Year).forEach(function(x){
+                                Object.keys(a.apply.Year[x]).forEach(function(y){
+                                    if(x + "-" + y==result['now_date']){
+                                        str = x + "-" + y;
+                                        bool = true;
+                                    };
+                                })
+                            })
+
+                            var check = str.split("-");
                             Object.keys(result['date'][x]).forEach(function(y){
                                 $('#ND tr').last().find('td').eq(y).text(result['date'][x][y]);
-								$('#ND tr').last().find('td').eq(y).attr('value',result['date'][x][y]);
+                                $('#ND tr').last().find('td').eq(y).attr('value',result['date'][x][y]);
+                                if(bool==true){
+                                    for(var i=0;i<=a.apply.Year[check[0]][check[1]].length;i++){
+                                        if(a.apply.Year[check[0]][check[1]][i]==result['date'][x][y]){
+                                            $('#ND tr').last().find('td').eq(y).attr('style','background:yellow');
+                                        }
+                                    }
+                                }
                             })
                         })
-
+                        
                         $('#prev').text(result['prev_date']);
                         $('#now').text(result['now_date']);
                         $('#next').text(result['next_date']);
@@ -47,14 +85,6 @@
                     },
                 })
             }
-
-            $('#ND tr td').click(function(){
-                if(typeof($(this).attr('value'))=="undefined"){
-                    alert('該月份沒有該日期');
-                }else{
-                    alert($(this).attr('value'));
-                }
-            })
 		})
 	</script>
     <style>
@@ -96,14 +126,10 @@
 </head>
 <body>
 
-<div id="DL">
-        Dialog Test
-</div>
 <div style="background-color:#39C">
 		<span id="navbar" width="80%;">Data Processing</span>
 			<span style="margin:520px;">
 				<?php
-					session_start();
 					if(isset($_SESSION['cbool']) == "" || $_SESSION['cbool'] == false){
 				?>
 				<a href="./login.php">登入</a>

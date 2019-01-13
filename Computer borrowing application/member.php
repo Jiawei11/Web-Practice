@@ -22,6 +22,8 @@
 			}
 		?>
 		<a href="recordborrow.php">申請紀錄</a>
+		<p></p>
+		<a href="./logout.php">登出</a>
     </h1>
 </body>
 </html>

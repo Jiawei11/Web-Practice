@@ -5,30 +5,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>OrderFood</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="main.css">
-    <script src="main.js"></script>
+    <script src="./main.js"></script>
+    <script>
+        $(function () {
+            $('#Signin-btn').click(function () {
+                var Account = $('#Account').val();
+                var Password = $('#Password').val();
+                $.ajax({
+                    url: 'LoginProcess.php',
+                    async:false,
+                    type: 'POST',
+                    data: {
+                        User: Account,
+                        Pwd: Password
+                    },
+                    success: function (res) {
+                        $('body').html(res);
+                    },
+                })
+            })
+        })
+    </script>
 </head>
 
 <body>
     <div class="container">
-        <div align="center" style="margin:200px">
+        <div align="center">
             <img src="./images/penguin.jpg" width="500" class="rounded" alt="">
-        </div>
-        <div class="col-4" id="Account-id">
-            <label for="Account">Account:</label>
-            <input type="text" name="Account" id="Account" class="form-control">
-        </div>
-        <div class="col-4" id="Password-id">
-            <label for="Password">Password:</label>
-            <input type="password" name="Password" id="Password" class="form-control">
-        </div>
-        <div>
-            <button class="btn btn-primary" id="Signin-btn">Sign in</button>
+            <div class="col-9" id="Account-id">
+                <label for="Account">Account:</label>
+                <input type="text" name="Account" id="Account" class="form-control">
+            </div>
+            <div class="col-9" id="Password-id">
+                <label for="Password">Password:</label>
+                <input type="password" name="Password" id="Password" class="form-control">
+            </div>
+            <p>
+                <div>
+                    <button class="btn btn-primary" id="Signin-btn">Sign in</button>
+                </div>
+            </p>
         </div>
     </div>
 </body>

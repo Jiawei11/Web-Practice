@@ -10,8 +10,29 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="main.css">
-    <script src="main.js"></script>
+    <script>
+        $(function(){
+            $('#MyData').click(function(){
+                $.ajax({
+                    url:'MemberData.php',
+                    dataType:'JSON',
+                    success:function(res){
+                        $.each(res, function(i, item) {
+                            $.each($('#Member *'),function(){
+                                if($(this).attr('id') == i.toString()){
+                                    $(this).css('text-align','center');
+                                    $(this).attr('value',item);
+                                }
+                            })
+                        })
+                    },
+                    error:function(err){
+                        console.log(err);
+                    }
+                })
+            })
+        })
+    </script>
 </head>
 
 <body>
@@ -23,14 +44,52 @@
         </div>
         <p>
             <div class="container">
-                <button id="shopping" class="btn btn-danger">
+                <button type="button" id="MyData" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    個人資料
+                </button>
+                <button id="shopping" class="btn btn-primary">
                     購物車
                 </button>
-                <button id="settle" class="btn btn-danger">
+                <button id="settle" class="btn btn-primary">
                     結帳
                 </button>
             </div>
         </p>
+
+        <!-- 個人資料Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">會員個人資料</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="Member">
+                <p>
+                    會員編號:
+                    <input type="text" readonly id="m_id" class="form-control">
+                </p>
+                <p>
+                    會員姓名:
+                    <input type="text" readonly id="m_name" class="form-control">
+                </p>
+                <p>
+                    會員權限:
+                    <input type="text" readonly id="m_rank" class="form-control">
+                </p>
+                <p>
+                    創建時間:
+                    <input type="text" readonly id="m_date" class="form-control">
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+            </div>
+        </div>
+        </div>
         <p>
             <div class="container">
                 <div class="card-group">

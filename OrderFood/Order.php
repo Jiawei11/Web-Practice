@@ -12,6 +12,13 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
     <script>
         $(function(){
+            var OrderFood = {
+                'penjuin':0,
+                'chicken':0,
+                'egg':0
+            }
+
+            console.log(OrderFood);
             $('#MyData').click(function(){
                 $.ajax({
                     url:'MemberData.php',
@@ -31,6 +38,10 @@
                     }
                 })
             })
+
+            $('[name=AddOrderBtn]').click(function(){
+                
+            })
         })
     </script>
 </head>
@@ -48,7 +59,7 @@
                     個人資料
                 </button>
                 <button id="shopping" class="btn btn-primary">
-                    購物車
+                    購物車 <span class="badge badge-light" id="ShopCarCount">0</span>
                 </button>
                 <button id="settle" class="btn btn-primary">
                     結帳

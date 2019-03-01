@@ -12,16 +12,17 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
     <script>
         $(function(){
-            var OrderFood = {
-                'penjuin':0,
-                'chicken':0,
-                'egg':0
+            
+            var ShopData = {
+                'egg':0,
+                'penguin':0,
+                'chicken':0
             }
 
-            console.log(OrderFood);
+            //會員個人資料
             $('#MyData').click(function(){
                 $.ajax({
-                    url:'MemberData.php',
+                    url:'GetMemberData.php',
                     dataType:'JSON',
                     success:function(res){
                         $.each(res, function(i, item) {
@@ -34,13 +35,20 @@
                         })
                     },
                     error:function(err){
-                        console.log(err);
+                        console.error(err);
                     }
                 })
+            })           
+            
+            //點餐數量
+            $('.footer button').click(function(){
+                var DataCount = prompt('要點多少份呢?');
+                ShopData[this.value] += DataCount == '' ? 1 : parseInt(DataCount);
+                console.log(ShopData);
             })
 
-            $('[name=AddOrderBtn]').click(function(){
-                
+            $('#shopping').click(function(){
+                console.log(ShopData);
             })
         })
     </script>
@@ -58,11 +66,11 @@
                 <button type="button" id="MyData" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                     個人資料
                 </button>
-                <button id="shopping" class="btn btn-primary">
-                    購物車 <span class="badge badge-light" id="ShopCarCount">0</span>
-                </button>
                 <button id="settle" class="btn btn-primary">
                     結帳
+                </button>
+                <button id="shopping" class="btn btn-primary" data-toggle="modal" data-target="#ShopCar">
+                    購物車 <span id="ShopCarCount" class="badge badge-light">0</span>
                 </button>
             </div>
         </p>
@@ -101,6 +109,28 @@
             </div>
         </div>
         </div>
+
+
+        <!-- 購物車Modal -->
+        <div class="modal fade" id="ShopCar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">購物車內物品</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="Member">
+                Hi
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+            </div>
+        </div>
+        </div>
+
         <p>
             <div class="container">
                 <div class="card-group">

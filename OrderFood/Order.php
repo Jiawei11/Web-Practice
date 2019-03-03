@@ -14,22 +14,28 @@
         $(function(){
             
             var ShopData = {
+                'chicken':0,
                 'egg':0,
                 'penguin':0,
-                'chicken':0
+            }
+
+            var ShopDataCost = {
+                'chicken':20,
+                'egg':30,
+                'penguin':40,
             }
 
             //會員個人資料
             $('#MyData').click(function(){
                 $.ajax({
-                    url:'GetMemberData.php',
+                    url:'GetMemberData.php',                    
                     dataType:'JSON',
                     success:function(res){
-                        $.each(res, function(i, item) {
+                        $.each(res, function(Key, Value) {
                             $.each($('#Member *'),function(){
-                                if($(this).attr('id') == i.toString()){
+                                if($(this).attr('id') == Key.toString()){
                                     $(this).css('text-align','center');
-                                    $(this).attr('value',item);
+                                    $(this).attr('value',Value);
                                 }
                             })
                         })
@@ -43,8 +49,15 @@
             //點餐數量
             $('.footer button').click(function(){
                 var DataCount = prompt('要點多少份呢?');
-                ShopData[this.value] += DataCount == '' ? 1 : parseInt(DataCount);
-                console.log(ShopData);
+                ShopData[this.value] += DataCount == '' ? 1 : parseInt(DataCount);             
+                $('tbody').append('<tr>'+
+                                        '<td>' + $(this).val() + '</td>' +
+                                        '<td>' + DataCount + '</td>' +
+                                        '<td>' + DataCount * ShopDataCost[$(this).val()] + '</td>' +
+                                  '</tr>');
+                                  
+                //更新購物車數量標籤
+                $('#ShopCount').text($('tbody tr').length);
             })
 
             $('#shopping').click(function(){
@@ -66,11 +79,11 @@
                 <button type="button" id="MyData" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                     個人資料
                 </button>
+                <button id="shopping" class="btn btn-primary" data-toggle="modal" data-target="#ShopCar">
+                    購物車 <span id="ShopCount" class="badge badge-light">0</span>
+                </button>
                 <button id="settle" class="btn btn-primary">
                     結帳
-                </button>
-                <button id="shopping" class="btn btn-primary" data-toggle="modal" data-target="#ShopCar">
-                    購物車 <span id="ShopCarCount" class="badge badge-light">0</span>
                 </button>
             </div>
         </p>
@@ -122,7 +135,17 @@
                 </button>
             </div>
             <div class="modal-body" id="Member">
-                Hi
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>名稱</th>
+                            <th>數量</th>
+                            <th>價錢</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -172,7 +195,7 @@
                         <img class=" card-img-top" src="./images/penguin.jpg">
                         <div class="card-body">
                             <p class="card-text">
-                                好吃的企鵝
+                                好吃的企鵝飯糰
                             </p>
                             <p class="car-text">
                                 價格:40元

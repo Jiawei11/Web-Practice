@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <title>Chat Room Example</title>
+    <style>
+        #ChatDiv{
+            margin:0px auto;
+            width:500px;
+            border:1px solid #333;
+            position:relative;
+        }
+
+        #ChatText{
+            position:relative;
+            margin-left:10px;
+            border-radius:10px;
+            bottom:3px;
+        }
+
+        #box{
+            width:120px;
+            background:gray;
+        }
+    </style>
+
+    <script>
+        $(function(){
+            $('#ChatMain>div').on('contextmenu',function(){
+                if($('#box').attr('Check') == undefined){
+                    $('#box').css('display','block');
+                    $('#box').attr('Check',false);
+                }else{
+                    $('#box').css('display','none');
+                    $('#box').removeAttr('Check');
+                }
+                return false;
+            })
+
+            $('button').click(function(){
+                console.log(1);
+                $('#ChatMain').append('<div style="background:gray; border:1px solid #333;" align="right" >'+ $('#SendText').val() +'</div>');
+                $('#SendText').val('');
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <div id="ChatDiv">
+        <div id="ChatMain">
+            <div align="left">
+                Message:1
+            </div>
+            <div align="right">
+                Message:2
+            </div>
+        </div>
+        <div id="ChatText">
+            <input type="text" id="SendText">
+            <button>傳送訊息</button>
+        </div>
+    </div>
+    <div id="box" style="display:none">
+        <ul>
+            <li>
+                Selection1
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>

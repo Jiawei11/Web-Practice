@@ -1,0 +1,41 @@
+#tb {
+    width: 200px;
+    position: absolute;
+    left: 175px;
+}
+
+
+table {
+    background-image: url('./images/background.png');
+    background-repeat: repeat;
+    border-radius: 15px;
+    text-align: center;
+    width: 500px;
+}
+
+#Data {
+    background-image: url('./images/background.png');
+    background-repeat: repeat;
+    border-radius: 15px;
+    text-align: center;
+    width: 500px;
+}
+
+input {
+    text-align: center;
+}
+
+button {
+    border-radius: 15px;
+    width: 100px
+}
+
+a {
+    color: yellow;
+    user-select: none;
+}
+
+body {
+    background-color: gray;
+    color: white;
+}

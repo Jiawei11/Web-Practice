@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./tools/jquery.js"></script>
+    <script src="./tools/jquery-ui.js"></script>
+    <script>
+        $(function(){
+            $('#btn').click(function () {                
+                if($('#CardCount').val()<=0 || $('#CardCount').val()>5){
+                    alert('不能輸入小於零或大於五');
+                    return false;
+                }
+
+                var Code = {};
+
+                for(var i =0;i<$('#CardCount').val();i++){
+                    Code[i+1] = 0;
+                }
+
+                $('#CardGame *').remove();
+                for (var i = 0; i < $('#CardCount').val() * 2; i++) {
+                    var btn = document.createElement('button');
+                    btn.className = 'Card';
+                    $(btn).css({
+                        'width':'200px',
+                        'height':'300px',
+                        'border-radius':'15px'
+                    })
+                    $('#CardGame').append(btn);
+                }
+            })
+
+            $('#CardGame').on('click', '.Card', function () {
+                if($(this).attr('Exits') == undefined){
+                    $(this).attr('Exits','true');                    
+                    $(this).css('background-color','red');
+                }else{
+                    $(this).removeAttr('Exits');
+                    $(this).css('background-color','');
+                }
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <div align="center">
+        <p>
+            <input type="text" style="text-align:center;" id="CardCount">
+        </p>
+        <p>
+            <button id="btn">Create Card</button>
+        </p>
+    </div>
+    <div id="CardGame" align="center">
+
+    </div>
+</body>
+
+</html>

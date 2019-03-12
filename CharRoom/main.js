@@ -1,7 +1,13 @@
-let worker = new Worker('workers.js');
+var worker = new SharedWorker('workers.js');
+
 document.getElementById('test').addEventListener('click', function () {
-    worker.postMessage('start');
+    worker.port.postMessage('start');
 });
+
+worker.port.onmessage = function (val) {
+    console.log(val);
+}
+
 $(function(){        
     $('#ChatMain>div').on('contextmenu',function(){
         if($('#box').attr('Check') == undefined){

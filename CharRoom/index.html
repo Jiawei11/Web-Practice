@@ -8,6 +8,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="./main.js"></script>
     <title>Chat Room Example</title>
     <style>
         #ChatDiv{
@@ -29,27 +30,6 @@
             background:gray;
         }
     </style>
-
-    <script>
-        $(function(){
-            $('#ChatMain>div').on('contextmenu',function(){
-                if($('#box').attr('Check') == undefined){
-                    $('#box').css('display','block');
-                    $('#box').attr('Check',false);
-                }else{
-                    $('#box').css('display','none');
-                    $('#box').removeAttr('Check');
-                }
-                return false;
-            })
-
-            $('button').click(function(){
-                console.log(1);
-                $('#ChatMain').append('<div style="background:gray; border:1px solid #333;" align="right" >'+ $('#SendText').val() +'</div>');
-                $('#SendText').val('');
-            })
-        })
-    </script>
 </head>
 
 <body>
@@ -64,7 +44,8 @@
         </div>
         <div id="ChatText">
             <input type="text" id="SendText">
-            <button>傳送訊息</button>
+            <button id="SendTexTBtn">傳送訊息</button>
+            <button id="test">傳送訊息</button>
         </div>
     </div>
     <div id="box" style="display:none">

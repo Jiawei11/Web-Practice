@@ -1,11 +1,11 @@
 var worker = new SharedWorker('workers.js');
 
 document.getElementById('test').addEventListener('click', function () {
-    worker.port.postMessage('start');
+    worker.port.postMessage($('#SendText').val());
 });
 
-worker.port.onmessage = function (val) {
-    console.log(val);
+worker.port.onmessage = function (res) {
+    console.log(res.data);
 }
 
 $(function(){        
@@ -21,7 +21,7 @@ $(function(){
     })
 
     $('#SendTexTBtn').click(function(){
-        $('#ChatMain').append('<div align="right" >'+ $('#SendText').val() +'</div>');
+        $('#ChatMain').append(`<div align="right">${$('#SendText').val()}</div>`);
         $('#SendText').val('');
     })
 })

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #LoadDiv {
+            width: 500px;
+            height: 500px;
+            border: 1px solid black;
+            margin: 0 auto;
+        }
+
+        .active{
+            background:#39f;
+        }
+
+        #FileUp{
+            /* display: none; */
+        }
+    </style>
+
+    <script>
+        window.onload = function(){
+            const fr = new FileReader();
+            const Load = document.getElementById('LoadDiv');
+
+            //當框框被點選的時候開啟檔案上傳
+            document.getElementById('LoadDiv').addEventListener('click',function(){
+                document.getElementById('FileUp').click();
+            })
+
+            //Test
+            document.getElementById('FileUp').addEventListener('change',function(e){
+                console.log(e.target.files);
+            })
+            
+            Load.ondrop = function(e){
+                FileLoad(e.dataTransfer.files[0].name)
+                console.log(e.dataTransfer.files[0].name,1);
+                document.getElementById('LoadDiv').classList.remove('active');
+                e.preventDefault();
+            }
+
+
+            Load.ondragenter = function(e){
+                document.getElementById('LoadDiv').classList.add('active');
+            }
+
+            Load.ondragover = function(e){                
+                console.log(e,2);
+                return false;
+            }
+
+            Load.ondragleave = function(e){
+                document.getElementById('LoadDiv').classList.remove('active');
+                e.preventDefault();
+                console.log(e,3);
+            }
+
+            //上傳Func
+            function FileLoad(FileName){
+                fetch('File.php',{
+                    method:'POST',
+                    body:JSON.stringify(`${Date.now()}_${FileName}`)
+                }).then(function(res){
+                    return res.text();
+                }).then(function(res){
+                    console.log(res);
+                }).catch((err)=>{
+                    console.log(err);
+                })
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="LoadDiv">
+        <input type="file" id="FileUp" multiple>
+    </div>
+</body>
+
+</html>

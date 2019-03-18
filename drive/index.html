@@ -25,26 +25,40 @@
         
         #sp{
             cursor: pointer;
+            margin-top: 200px;
         }
     </style>
 
     <script>
         window.onload = function(){
-            const fr = new FileReader();
             const Load = document.getElementById('LoadDiv');
 
-            //當框框被點選的時候開啟檔案上傳
             document.getElementById('LoadDiv').addEventListener('click',function(){
                 document.getElementById('FileUp').click();
             })
 
             document.getElementById('FileUp').addEventListener('change',function(e){
-                for(let i = 0;i<e.target.files.length;i++){
-                    FileLoad(e.target.files[i].name);
-                    console.log(e.target.files[i].name);
-                }
+                CreateURL(this);
+                // for(let i = 0;i<e.target.files.length;i++){
+                //     FileLoad(e.target.files[i].name);
+                //     console.log(e.target.files[i]);
+                //     const fr = new FileReader();
+                //     fr.onload = function(e){
+                //         console.log(1);
+                //     }
+                // }
             })
             
+            function CreateURL(input){
+                console.log(input.files);
+                const fr = new FileReader();
+                fr.readAsDataURL(input.files[0])
+                fr.onload = function(e){
+                    document.getElementById('img').src = this.result;
+                    console.log(this.result);
+                }
+            }
+
             Load.ondrop = function(e){
                 FileLoad(e.dataTransfer.files[0].name)
                 console.log(e.dataTransfer.files[0].name,1);
@@ -76,7 +90,7 @@
                 }).then(function(res){
                     return res.text();
                 }).then(function(res){
-                    console.log(res);
+                    // console.log(res);
                 }).catch((err)=>{
                     console.log(err);
                 })
@@ -88,9 +102,10 @@
 <body>
     <div id="LoadDiv">
         <input type="file" id="FileUp" multiple>
-        <span id="sp">
+        <div id="sp" align="center">
             拖曳檔案，或點我即可上傳。
-        </span>
+            <img src="" id="img">
+        </div>
     </div>
 </body>
 

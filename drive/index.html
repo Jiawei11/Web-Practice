@@ -12,15 +12,19 @@
             height: 500px;
             border: 1px solid black;
             margin: 0 auto;
+            cursor: pointer;
         }
 
         .active{
-            /* background:#39f; */
             background: oldlace;
         }
 
         #FileUp{
-            /* display: none; */
+            display: none;
+        }
+        
+        #sp{
+            cursor: pointer;
         }
     </style>
 
@@ -36,7 +40,10 @@
 
             //Test
             document.getElementById('FileUp').addEventListener('change',function(e){
-                console.log(e.target.files);
+                for(let i = 0;i<e.target.files.length;i++){
+                    FileLoad(e.target.files[i].name);
+                    console.log(e.target.files[i].name);
+                }
             })
             
             Load.ondrop = function(e){
@@ -62,7 +69,7 @@
                 console.log(e,3);
             }
 
-            //上傳Func
+            //Upload Func
             function FileLoad(FileName){
                 fetch('File.php',{
                     method:'POST',
@@ -82,6 +89,9 @@
 <body>
     <div id="LoadDiv">
         <input type="file" id="FileUp" multiple>
+        <span id="sp">
+            拖曳檔案，或點我即可上傳。
+        </span>
     </div>
 </body>
 

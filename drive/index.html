@@ -53,7 +53,7 @@
                 console.log(input.files);
                 const fr = new FileReader();
                 fr.readAsDataURL(input.files[0])
-                fr.onload = function(e){
+                fr.onload = function(e){                    
                     document.getElementById('img').src = this.result;
                     console.log(this.result);
                 }

@@ -49,13 +49,28 @@
                 // }
             })
             
+            
+            var Check = [];
+            //創建一個空的陣列存取圖案的src
             function CreateURL(input){
-                console.log(input.files);
-                const fr = new FileReader();
-                fr.readAsDataURL(input.files[0])
-                fr.onload = function(e){                    
-                    document.getElementById('img').src = this.result;
-                    console.log(this.result);
+                for(var i=0;i<input.files.length;i++){
+                    //取得預覽Src
+                    const fr = new FileReader();
+                    fr.readAsDataURL(input.files[i])
+
+                    //創建img並append到div底下
+                    fr.onload = function(e){
+                        if(Check.indexOf(this.result) == -1){
+                            Check.push(this.result);
+                            var img = document.createElement('img');
+                            img.src = this.result;
+                            img.width =  100;
+                            img.height = 100;
+                            document.getElementById('LoadImg').append(img);
+                        }else{                            
+                            return false;
+                        }
+                    }
                 }
             }
 
@@ -104,8 +119,8 @@
         <input type="file" id="FileUp" multiple>
         <div id="sp" align="center">
             拖曳檔案，或點我即可上傳。
-            <img src="" id="img">
         </div>
+        <div id="LoadImg"></div>
     </div>
 </body>
 

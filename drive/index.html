@@ -49,9 +49,9 @@
                 // }
             })
 
-
-            var Check = [];
             //Create Empty Array Add Img Src
+            var Check = [];
+
             function CreateURL(input) {
                 for (var i = 0; i < input.files.length; i++) {
                     //Get FileReader Data URL
@@ -74,6 +74,22 @@
                 }
             }
 
+            //UpLoadImg Func
+            function FileLoad(FileName) {
+                fetch('File.php', {
+                    method: 'POST',
+                    body: JSON.stringify(`${Date.now()}${FileName}`)
+                }).then((res) => {
+                    return res.text();
+                }).then((res) => {
+                    console.log(res);
+                }).catch((err) => {
+                    console.log(err);
+                })
+            }
+
+            console.log(Check);
+
             Load.ondrop = (e) => {
                 FileLoad(e.dataTransfer.files[0].name)
                 document.getElementById('LoadDiv').classList.remove('active');
@@ -94,20 +110,6 @@
                 document.getElementById('LoadDiv').classList.remove('active');
                 e.preventDefault();
                 console.log(e, 3);
-            }
-
-            //UpLoadImg Func
-            function FileLoad(FileName) {
-                fetch('File.php', {
-                    method: 'POST',
-                    body: JSON.stringify(`${Date.now()}_${FileName}`)
-                }).then(function (res) {
-                    return res.text();
-                }).then(function (res) {
-                    console.log(res);
-                }).catch((err) => {
-                    console.log(err);
-                })
             }
         }
     </script>

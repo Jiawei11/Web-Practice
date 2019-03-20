@@ -74,11 +74,11 @@
                 }
             }
 
-            //UpLoadImg Func
+            //UpLoadImg Func Storage Array Data
             function FileLoad(FileName) {
                 fetch('File.php', {
                     method: 'POST',
-                    body: JSON.stringify(`${Date.now()}${FileName}`)
+                    body:[`${Date.now()}${FileName}`,Check]
                 }).then((res) => {
                     return res.text();
                 }).then((res) => {

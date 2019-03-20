@@ -15,29 +15,29 @@
             cursor: pointer;
         }
 
-        .active{
+        .active {
             background: oldlace;
         }
 
-        #FileUp{
+        #FileUp {
             display: none;
         }
-        
-        #sp{
+
+        #sp {
             cursor: pointer;
             margin-top: 200px;
         }
     </style>
 
     <script>
-        window.onload = function(){
+        window.onload = function () {
             const Load = document.getElementById('LoadDiv');
 
-            document.getElementById('LoadDiv').addEventListener('click',function(){
+            document.getElementById('LoadDiv').addEventListener('click', function () {
                 document.getElementById('FileUp').click();
             })
 
-            document.getElementById('FileUp').addEventListener('change',function(e){
+            document.getElementById('FileUp').addEventListener('change', function (e) {
                 CreateURL(this);
                 // for(let i = 0;i<e.target.files.length;i++){
                 //     FileLoad(e.target.files[i].name);
@@ -48,65 +48,64 @@
                 //     }
                 // }
             })
-            
-            
+
+
             var Check = [];
-            //創建一個空的陣列存取圖案的src
-            function CreateURL(input){
-                for(var i=0;i<input.files.length;i++){
-                    //取得預覽Src
+            //Create Empty Array Add Img Src
+            function CreateURL(input) {
+                for (var i = 0; i < input.files.length; i++) {
+                    //Get FileReader Data URL
                     const fr = new FileReader();
                     fr.readAsDataURL(input.files[i])
 
-                    //創建img並append到div底下
-                    fr.onload = function(e){
-                        if(Check.indexOf(this.result) == -1){
+                    //Create Img Element Append To Div
+                    fr.onload = function (e) {
+                        if (Check.indexOf(this.result) == -1) {
                             Check.push(this.result);
                             var img = document.createElement('img');
                             img.src = this.result;
-                            img.width =  100;
+                            img.width = 100;
                             img.height = 100;
                             document.getElementById('LoadImg').append(img);
-                        }else{                            
+                        } else {
                             return false;
                         }
                     }
                 }
             }
 
-            Load.ondrop = function(e){
+            Load.ondrop = (e) => {
                 FileLoad(e.dataTransfer.files[0].name)
-                console.log(e.dataTransfer.files[0].name,1);
                 document.getElementById('LoadDiv').classList.remove('active');
                 e.preventDefault();
             }
 
 
-            Load.ondragenter = function(e){
+            Load.ondragenter = function (e) {
                 document.getElementById('LoadDiv').classList.add('active');
             }
 
-            Load.ondragover = function(e){                
-                console.log(e,2);
+            Load.ondragover = function (e) {
+                console.log(e, 2);
                 return false;
             }
 
-            Load.ondragleave = function(e){
+            Load.ondragleave = function (e) {
                 document.getElementById('LoadDiv').classList.remove('active');
                 e.preventDefault();
-                console.log(e,3);
+                console.log(e, 3);
             }
 
-            //Upload Func
-            function FileLoad(FileName){
-                fetch('File.php',{
-                    method:'POST',
-                    body:JSON.stringify(`${Date.now()}_${FileName}`)
-                }).then(function(res){
+            //UpLoadImg Func
+            function FileLoad(FileName) {
+                fetch('File.php', {
+                    method: 'POST',
+                    body: JSON.stringify(`${Date.now()}_${FileName}`)
+                }).then(function (res) {
                     return res.text();
-                }).then(function(res){
-                    // console.log(res);
-                }).catch((err)=>{
+                }).then(function (res) {
+                    console.log(res);
+                }).catch((err) => {
                     console.log(err);
                 })
             }

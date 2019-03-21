@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>UpLoad Website</title>
     <style>
         #LoadDiv {
             width: 500px;
@@ -51,7 +51,6 @@
 
             //Create Empty Array Add Img Src
             var Check = [];
-
             function CreateURL(input) {
                 for (var i = 0; i < input.files.length; i++) {
                     //Get FileReader Data URL
@@ -74,11 +73,12 @@
                 }
             }
 
-            //UpLoadImg Func Storage Array Data
-            function FileLoad(FileName) {
+            //FileLoad Func
+            function FileLoad(FileName,Check) {
                 fetch('File.php', {
                     method: 'POST',
-                    body:[`${Date.now()}${FileName}`,Check]
+                    //`${Date.now()}${FileName}`
+                    body:JSON.stringify(Check)
                 }).then((res) => {
                     return res.text();
                 }).then((res) => {
@@ -88,10 +88,8 @@
                 })
             }
 
-            console.log(Check);
-
             Load.ondrop = (e) => {
-                FileLoad(e.dataTransfer.files[0].name)
+                FileLoad(e.dataTransfer.files[0].name,Check);
                 document.getElementById('LoadDiv').classList.remove('active');
                 e.preventDefault();
             }
@@ -102,14 +100,12 @@
             }
 
             Load.ondragover = function (e) {
-                console.log(e, 2);
                 return false;
             }
 
             Load.ondragleave = function (e) {
                 document.getElementById('LoadDiv').classList.remove('active');
                 e.preventDefault();
-                console.log(e, 3);
             }
         }
     </script>

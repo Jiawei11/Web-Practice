@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>UpLoad Website</title>
     <style>
-        #LoadDiv {
+        #mainDiv {
             width: 500px;
             height: 500px;
             border: 1px solid black;
@@ -19,25 +19,32 @@
             background: oldlace;
         }
 
-        #FileUp {
+        #fileData {
             display: none;
         }
 
-        #sp {
+        #mainDivText {
             cursor: pointer;
             margin-top: 200px;
+        }
+
+        #mainImg{
+            width: 500px;
+            height: 400px;
+            margin: 0 auto;
+            border: 1px solid blanchedalmond;
         }
     </style>
 
     <script>
         window.onload = function () {
-            const Load = document.getElementById('LoadDiv');
+            const main = document.getElementById('mainDiv');
 
-            document.getElementById('LoadDiv').addEventListener('click', function () {
-                document.getElementById('FileUp').click();
+            document.getElementById('mainDiv').addEventListener('click', function () {
+                document.getElementById('fileData').click();
             })
 
-            document.getElementById('FileUp').addEventListener('change', function () {
+            document.getElementById('fileData').addEventListener('change', function () {
                 CreateURL(this);
             })
 
@@ -51,14 +58,13 @@
                         img.title = Date.now();
                         img.width = 100;
                         img.height = 100;
-                        document.getElementById('LoadImg').append(img);
-                        FileLoad(img.title,img.src);
+                        document.getElementById('mainImg').append(img);
+                        upmainImg(img.title,img.src);
                     }
                 }
             }
 
-            //FileLoad Func
-            function FileLoad(fileName,src) {
+            function upmainImg(fileName,src) {
                 fetch('File.php', {
                     method: 'POST',
                     body: JSON.stringify({
@@ -74,23 +80,23 @@
                 })
             }
 
-            Load.ondrop = (e) =>{
-                FileLoad(e.dataTransfer.files[0].name);
-                document.getElementById('LoadDiv').classList.remove('active');
+            main.ondrop = (e) =>{
+                CreateURL(e.dataTransfer);
+                document.getElementById('mainDiv').classList.remove('active');
                 e.preventDefault();
             }
 
 
-            Load.ondragenter = function (e) {
-                document.getElementById('LoadDiv').classList.add('active');
+            main.ondragenter = function (e) {
+                document.getElementById('mainDiv').classList.add('active');
             }
 
-            Load.ondragover = function (e) {
+            main.ondragover = function (e) {
                 return false;
             }
 
-            Load.ondragleave = function (e) {
-                document.getElementById('LoadDiv').classList.remove('active');
+            main.ondragleave = function (e) {
+                document.getElementById('mainDiv').classList.remove('active');
                 e.preventDefault();
             }
         }
@@ -98,13 +104,15 @@
 </head>
 
 <body>
-    <div id="LoadDiv">
-        <input type="file" id="FileUp" multiple>
-        <div id="sp" align="center">
+    <div id="mainDiv">
+        <input type="file" id="fileData" multiple>
+        <div id="mainDivText" align="center">
             拖曳檔案，或點我即可上傳。
         </div>
     </div>
-    <div id="LoadImg"></div>
+    <p>
+        <div id="mainImg"></div>
+    </p>
 </body>
 
 </html>

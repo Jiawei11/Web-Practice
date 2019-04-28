@@ -1,9 +1,0 @@
-C:\Users\Nw\Desktop\p107\p107\bin\Debug\p107.exe
-C:\Users\Nw\Desktop\p107\p107\bin\Debug\p107.pdb
-C:\Users\Nw\Desktop\p107\p107\bin\Debug\p107.xml
-C:\Users\Nw\Desktop\p107\p107\obj\x86\Debug\p107.Form1.resources
-C:\Users\Nw\Desktop\p107\p107\obj\x86\Debug\p107.Resources.resources
-C:\Users\Nw\Desktop\p107\p107\obj\x86\Debug\p107.vbproj.GenerateResource.Cache
-C:\Users\Nw\Desktop\p107\p107\obj\x86\Debug\p107.exe
-C:\Users\Nw\Desktop\p107\p107\obj\x86\Debug\p107.xml
-C:\Users\Nw\Desktop\p107\p107\obj\x86\Debug\p107.pdb

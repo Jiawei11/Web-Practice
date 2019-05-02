@@ -38,20 +38,13 @@
                     for (var i = 0; i < arr[res].length; i++) {
                         var li = document.createElement('li');
                         $(li).text(arr[res][i]['餐廳名稱']);
-                        code.push({
-                            '餐廳名稱': arr[res][i]['餐廳名稱'],
-                            '地址': arr[res][i]['地址'],
-                            '電話': arr[res][i]['電話'],
-                            '網址': arr[res][i]['網址'],
-                            '備註': arr[res][i]['備註']
-                        })
                         $(li).addClass('resName');
                         $(ul).append(li);
+                        code.push(arr[res][i]);
                     }
                     $('#menu').append(ul).disableSelection();
                 })
             })
-            console.log(code);
 
             $('#menu').on('click', '.resCategory', function () {
                 $(this).find('li').toggleClass('active');

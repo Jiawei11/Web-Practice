@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <style>
+        ul {
+            list-style-type: none;
+            cursor: default;
+        }
+
+        ul>li {
+            margin-left: 50px;
+        }
+
+        .active {
+            display: none;
+        }
+    </style>
+
+    <script>
+        $(function () {
+            var arr;
+            var code = [];
+            $.getJSON('./restaurant.json', function (res) {
+                arr = res;
+                jQuery.each(res, function (res) {
+                    var ul = document.createElement('ul');
+                    $(ul).text(res);
+                    $(ul).addClass('resCategory');
+                    $(ul).attr('id', res);
+                    for (var i = 0; i < arr[res].length; i++) {
+                        var li = document.createElement('li');
+                        $(li).text(arr[res][i]['餐廳名稱']);
+                        code.push({
+                            '餐廳名稱': arr[res][i]['餐廳名稱'],
+                            '地址': arr[res][i]['地址'],
+                            '電話': arr[res][i]['電話'],
+                            '網址': arr[res][i]['網址'],
+                            '備註': arr[res][i]['備註']
+                        })
+                        $(li).addClass('resName');
+                        $(ul).append(li);
+                    }
+                    $('#menu').append(ul).disableSelection();
+                })
+            })
+            console.log(code);
+
+            $('#menu').on('click', '.resCategory', function () {
+                $(this).find('li').toggleClass('active');
+            })
+
+            $('#menu').on('click', '.resName', function () {
+                var searchResname = $(this).text().toString();
+                jQuery.each(code, function (res) {
+                    if (code[res]['餐廳名稱'] == searchResname) {
+                        alert(
+                            `餐廳名稱:${code[res]['餐廳名稱']}\n地址:${code[res]['地址']}\n電話:${code[res]['電話']}\n網址:${code[res]['網址']}\n備註:${code[res]['備註']}`
+                        );
+                    }
+                })
+                return false;
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <div id="menu">
+
+    </div>
+</body>
+
+</html>

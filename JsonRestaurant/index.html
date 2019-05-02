@@ -54,13 +54,12 @@
                 var searchResname = $(this).text().toString();
                 jQuery.each(result, function (res) {
                     if (result[res]['餐廳名稱'] == searchResname) {
-                        alert(
-                            `餐廳名稱:${result[res]['餐廳名稱']}\n` +
-                            `地址:${result[res]['地址']}\n` +
-                            `電話:${result[res]['電話']}\n` +
-                            `網址:${result[res]['網址']}\n` +
-                            `備註:${result[res]['備註']}`
-                        );
+                        var resultStr = "";
+                        for (var i = 0; i < Object.keys(result[res]).length; i++) {
+                            resultStr +=
+                                `${Object.keys(result[res])[i]}:${Object.values(result[res])[i]}\n`;
+                        }
+                        console.log(resultStr);
                     }
                 })
                 return false;

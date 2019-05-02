@@ -26,21 +26,21 @@
 
     <script>
         $(function () {
-            var arr;
-            var code = [];
+            var jsonData;
+            var result = [];
             $.getJSON('./restaurant.json', function (res) {
-                arr = res;
+                jsonData = res;
                 jQuery.each(res, function (res) {
                     var ul = document.createElement('ul');
                     $(ul).text(res);
                     $(ul).addClass('resCategory');
                     $(ul).attr('id', res);
-                    for (var i = 0; i < arr[res].length; i++) {
+                    for (var i = 0; i < jsonData[res].length; i++) {
                         var li = document.createElement('li');
-                        $(li).text(arr[res][i]['餐廳名稱']);
+                        $(li).text(jsonData[res][i]['餐廳名稱']);
                         $(li).addClass('resName');
                         $(ul).append(li);
-                        code.push(arr[res][i]);
+                        result.push(jsonData[res][i]);
                     }
                     $('#menu').append(ul).disableSelection();
                 })
@@ -52,10 +52,10 @@
 
             $('#menu').on('click', '.resName', function () {
                 var searchResname = $(this).text().toString();
-                jQuery.each(code, function (res) {
-                    if (code[res]['餐廳名稱'] == searchResname) {
+                jQuery.each(result, function (res) {
+                    if (result[res]['餐廳名稱'] == searchResname) {
                         alert(
-                            `餐廳名稱:${code[res]['餐廳名稱']}\n地址:${code[res]['地址']}\n電話:${code[res]['電話']}\n網址:${code[res]['網址']}\n備註:${code[res]['備註']}`
+                            `餐廳名稱:${result[res]['餐廳名稱']}\n地址:${result[res]['地址']}\n電話:${result[res]['電話']}\n網址:${result[res]['網址']}\n備註:${result[res]['備註']}`
                         );
                     }
                 })

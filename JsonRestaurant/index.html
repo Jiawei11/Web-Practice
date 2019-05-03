@@ -32,13 +32,10 @@
                 jsonData = res;
                 jQuery.each(res, function (res) {
                     var ul = document.createElement('ul');
-                    $(ul).text(res);
-                    $(ul).addClass('resCategory');
-                    $(ul).attr('id', res);
+                    $(ul).text(res).addClass('resCountry').attr('id',res);
                     for (var i = 0; i < jsonData[res].length; i++) {
                         var li = document.createElement('li');
-                        $(li).text(jsonData[res][i]['餐廳名稱']);
-                        $(li).addClass('resName');
+                        $(li).text(jsonData[res][i]['餐廳名稱']).addClass('resName');
                         $(ul).append(li);
                         result.push(jsonData[res][i]);
                     }
@@ -46,7 +43,7 @@
                 })
             })
 
-            $('#menu').on('click', '.resCategory', function () {
+            $('#menu').on('click', '.resCountry', function () {
                 $(this).find('li').toggleClass('active');
             })
 
@@ -59,7 +56,7 @@
                             resultStr +=
                                 `${Object.keys(result[res])[i]}:${Object.values(result[res])[i]}\n`;
                         }
-                        console.log(resultStr);
+                        alert(resultStr);
                     }
                 })
                 return false;

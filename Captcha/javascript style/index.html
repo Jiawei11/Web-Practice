@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+    <style>
+        #captcha {
+            width: 310px;
+            height: 32px;
+            border: 1px solid black;
+        }
+    </style>
+
+    <script>
+        $(function () {
+            var data = [];
+            createCanvas();
+            getRandnum();
+            getRandopt();
+            getRandnum();
+            console.log(Math.abs(parseInt(eval(data.join('')))));
+
+            function getRandnum() {
+                var ans = 0;
+                for (let i = 1; i <= 2; i++) {
+                    var rand = Math.floor(Math.random() * 9);
+                    var canvas = document.createElement('canvas');
+                    canvas.width = 32;
+                    canvas.height = 32;
+                    ans += (i % 2 == 1 ? rand * 10 : rand);
+                    var temp = canvas.getContext('2d');
+                    temp.font = '20px Arial';
+                    temp.fillText(rand, 10, 20);
+                    $('#main').append(canvas);
+                }
+                data.push(ans);
+            }
+
+            function getRandopt() {
+                var opt = ['+', '-', '*', '/'];
+                var rand = opt[Math.floor(Math.random() * opt.length)];
+                var canvas = document.createElement('canvas');
+                canvas.width = 32;
+                canvas.height = 32;
+                var temp = canvas.getContext('2d');
+                temp.font = '20px Arial';
+                temp.fillText(rand, 10, 20);
+                $('#main').append(canvas);
+                data.push(rand);
+            }
+
+            function createCanvas() {
+                for (let i = 0; i < 10; i++) {
+                    var canvas = document.createElement("canvas");
+                    canvas.width = 32;
+                    canvas.height = 32;
+                    $(canvas).attr('value', i);
+                    var canvasTemp = canvas.getContext("2d");
+                    canvasTemp.font = '20px Arial';
+                    canvasTemp.fillText(i, 10, 20);
+                    $('#num').append(canvas);
+                }
+
+                $('#num>canvas').draggable({
+                    snap: '#captcha',
+                    snapMode: 'corner',
+                    revert: 'invalid'
+                })
+
+                $('#captcha').droppable({
+                    drop: function (event, ui) {
+                        ui.helper.appendTo(this).css({
+                            'top': 0,
+                            'left': 0
+                        })
+                        getValue();
+                        $('#num>canvas').remove();
+                        createCanvas();
+                    }
+                })
+
+                function getValue() {
+                    var str = "";
+                    $('#captcha>canvas').each(function () {
+                        str += $(this).attr('value');
+                    })
+                    $('#pwd').val(str);
+                }
+            }
+
+            $('button').click(function () {
+                alert(parseInt($('#pwd').val()) == Math.abs(parseInt(eval(data.join('')))) ? '成功' :
+                    '失敗');
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <div id="num"></div>
+    <div id="captcha"></div>
+    <div id="main"></div>
+    <button class="ui-button">驗證</button>
+    <p>
+        <input type="text" id="pwd">
+    </p>
+</body>
+
+</html>
